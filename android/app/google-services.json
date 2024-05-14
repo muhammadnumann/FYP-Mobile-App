@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "869729943595",
+    "project_id": "mumtaz-services-notification",
+    "storage_bucket": "mumtaz-services-notification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869729943595:android:e055830bb907129c72aa6e",
+        "android_client_info": {
+          "package_name": "com.mumtaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869729943595-gf3k469ge9atpupsi3gnashrvl45ggeo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEjKD1nVpPdhgPZNDjCPwY5QnoElg7xZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869729943595-gf3k469ge9atpupsi3gnashrvl45ggeo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

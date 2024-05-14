@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ site.libs.css_lib }}" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch"></script>
+    <script src="{{ site.libs.js_lib }}"></script>
+    <!-- Moyasar Styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.moyasar.com/mpf/1.7.3/moyasar.css"
+    />
+  </head>
+
+  <body style="margin: 2rem">
+    <div class="payment-form"></div>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch"></script>
+    <script src="https://cdn.moyasar.com/mpf/1.7.3/moyasar.js"></script>
+    <script>
+      Moyasar.init({
+        element: ".payment-form",
+        amount: 1000,
+        currency: "SAR",
+        description: "Coffee Order #1",
+        publishable_api_key: "pk_test_AQpxBV31a29qhkhUYFYUFjhwllaDVrxSq5ydVNui",
+        callback_url: "https://moyasar.com/thanks",
+        methods: ["creditcard"],
+        on_completed: function (payment) {
+          return new Promise(function (resolve, reject) {
+            // savePayment is just an example, your usage may vary.
+            if (savePayment(payment)) {
+              resolve({});
+            } else {
+              reject();
+            }
+          });
+        },
+      });
+    </script>
+  </body>
+</html>
