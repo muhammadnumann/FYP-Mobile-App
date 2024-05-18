@@ -16,8 +16,6 @@ import {
   DELETE_ADMIN_MESSAGE_URL,
   GET_ADMIN_CHAT_URL,
 } from '../../../services/ApiConstants';
-import MessagesList from '../../../components/MessagesList';
-import ChatInput from '../../../components/ChatInput';
 import CustomHeader from '../../../components/CustomHeader';
 
 const SpAdminInbox = ({ route, navigation }) => {
@@ -162,26 +160,7 @@ const SpAdminInbox = ({ route, navigation }) => {
         onPressNotification={onPressNotification}
       />
 
-      <MessagesList
-        onSwipeToReply={swipeToReply}
-        chat={chat}
-        setShowModal={setShowModal}
-        setMessageId={setMessageId}
-      />
 
-      <ChatInput
-        reply={reply}
-        isLeft={isLeft}
-        closeReply={closeReply}
-        username={user.fullName}
-        message={message}
-        setMessage={setMessage}
-        onSend={onSend}
-        image={imageUri}
-        setImage={setImageUri}
-        handleAddImage={handleAddImage}
-        onSendMsg={onSendMsg}
-      />
     </View>
   );
 };

@@ -95,7 +95,7 @@ const CustomSideDrawer = ({ navigation }) => {
       }
     } else {
       if (notification.type === 'AcceptBySPBooking') {
-        navigate('BookingHomeScreens', {
+        navigate('AudioHomeScreens', {
           screen: 'AgentProfileScreen',
           params: {
             ProfileInfo: notification,
@@ -107,7 +107,7 @@ const CustomSideDrawer = ({ navigation }) => {
       } else if (notification.type === 'EndBooking') {
         getBookingDetails(notification.bookingId);
       } else if (notification.type === 'Message') {
-        navigate('BookingHomeScreens', {
+        navigate('AudioHomeScreens', {
           screen: 'UserInbox',
           params: {
             chatInfo: {
@@ -133,7 +133,7 @@ const CustomSideDrawer = ({ navigation }) => {
         GET_BOOKING_BY_ID_URL + '?bookingid=' + id
       );
 
-      navigate('BookingHomeScreens', {
+      navigate('AudioHomeScreens', {
         screen: 'ClientPaymentReceipt',
         params: { data: response.data, completed: true },
       });

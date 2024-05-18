@@ -1,4 +1,6 @@
 const initialState = {
+  loadAudios: false,
+  realAudios: null,
   activeBookings: null,
   completedBookings: null,
   cancelledBookings: null,
@@ -9,6 +11,17 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "REAL_AUDIOS":
+      return {
+        ...state, //copy all previous states
+        realAudios: action.payload,
+      };
+    case "LOAD_AUDIOS":
+      return {
+        ...state, //copy all previous states
+        loadAudios: action.payload,
+      };
+
     case "ACTIVE_BOOKINGS":
       return {
         ...state, //copy all previous states
@@ -41,6 +54,7 @@ export default (state = initialState, action) => {
         ...state, //copy all previous states
         loadBookings: action.payload,
       };
+
     default:
       return state;
   }

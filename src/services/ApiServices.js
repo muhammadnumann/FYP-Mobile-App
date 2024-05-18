@@ -38,7 +38,7 @@ export async function getBearerRequest(url) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: token,
+        authorization: token,
       },
     };
 

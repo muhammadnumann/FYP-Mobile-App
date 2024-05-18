@@ -1,6 +1,6 @@
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import CustomBookingCard from '../../../components/Cards/CustomBookingCard';
+import CustomAudioCard from '../../../components/Cards/CustomAudioCard';
 import { AppHeight, COLORS } from '../../../utils';
 import {
   FinishBookingService,
@@ -102,7 +102,7 @@ const ActiveBooking = ({ route }) => {
               key={index}
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
-              <CustomBookingCard
+              <CustomAudioCard
                 bookings={item}
                 status={'Active'}
                 index={index}

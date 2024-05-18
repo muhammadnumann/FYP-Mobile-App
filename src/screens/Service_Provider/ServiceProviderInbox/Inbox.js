@@ -1,8 +1,6 @@
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import ChatHeader from '../../../components/ChatHeader';
-import MessagesList from '../../../components/MessagesList';
-import ChatInput from '../../../components/ChatInput';
 import { useToast } from 'native-base';
 import {
   UploadImagetoServer,
@@ -190,26 +188,7 @@ const Inbox = ({ route, navigation }) => {
         booking={false}
       />
 
-      <MessagesList
-        onSwipeToReply={swipeToReply}
-        chat={chat}
-        setShowModal={setShowModal}
-        setMessageId={setMessageId}
-      />
 
-      <ChatInput
-        reply={reply}
-        isLeft={isLeft}
-        closeReply={closeReply}
-        username={chatInfo.fullName}
-        message={message}
-        setMessage={setMessage}
-        onSend={onSend}
-        image={imageUri}
-        setImage={setImageUri}
-        handleAddImage={handleAddImage}
-        onSendMsg={onSendMsg}
-      />
 
       <ConfirmationModal
         showModal={showModal}

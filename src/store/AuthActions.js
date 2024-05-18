@@ -34,7 +34,7 @@ export const Init = () => {
 export const handleLogin = (data) => {
   return async (dispatch) => {
     await AsyncStorage.setItem('token', data.userAuthToken);
-    await AsyncStorage.setItem('user', JSON.stringify(data.user));
+    await AsyncStorage.setItem('user', JSON.stringify(data.accountData));
     dispatch({
       type: 'TOKEN',
       payload: data.userAuthToken,

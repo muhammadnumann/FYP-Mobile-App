@@ -11,7 +11,7 @@ import UserInbox from "../UserInbox/UserInbox";
 
 const UserStack = createStackNavigator();
 
-export const BookingHomeScreens = () => {
+export const AudioHomeScreens = () => {
     return (
         <UserStack.Navigator screenOptions={{ headerShown: false }}>
             <UserStack.Screen name="UserBookingHome" component={UserBookingHome} />

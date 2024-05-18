@@ -111,7 +111,7 @@ const UserHome = ({ navigation }) => {
         GET_BOOKING_BY_ID_URL + '?bookingid=' + id
       );
 
-      navigate('BookingHomeScreens', {
+      navigate('AudioHomeScreens', {
         screen: 'ClientPaymentReceipt',
         params: { data: response.data, completed: true },
       });
@@ -151,7 +151,7 @@ const UserHome = ({ navigation }) => {
         notify
       );
       if (data.type === 'AcceptBySPBooking') {
-        navigation.navigate('BookingHomeScreens', {
+        navigation.navigate('AudioHomeScreens', {
           screen: 'AgentProfileScreen',
           params: {
             ProfileInfo: data,
@@ -200,7 +200,7 @@ const UserHome = ({ navigation }) => {
     navigation.navigate('UserNotification');
   };
 
-  const onPressBook = () => {};
+  const onPressBook = () => { };
 
   if (loadNotification) {
     return <CustomLoading content={t('loading') + '....'} top={null} />;
@@ -237,17 +237,17 @@ const UserHome = ({ navigation }) => {
     if (value === 'My Wallet') {
       navigation.navigate('UserProfileHome', { screen: 'Wallet' });
     } else if (value === 'Services In Progress') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 1 },
       });
     } else if (value === 'Scheduled Services') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 0 },
       });
     } else if (value === 'Work History') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 2 },
       });
@@ -267,8 +267,8 @@ const UserHome = ({ navigation }) => {
         navigation={navigation}
         // search={true}
         onPressNotification={onPressNotification}
-        // setSelectSearch={setSelectSearch}
-        // selectSearch={selectSearch}
+      // setSelectSearch={setSelectSearch}
+      // selectSearch={selectSearch}
       />
 
       {selectSearch ? (

@@ -5,7 +5,35 @@ import {
   InprogressBookingService,
   activeBookingService,
   cancelledBookingService,
+  realAudioService,
 } from '../../services/UserServices/UserService';
+
+export const getRealAudios = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'LOAD_AUDIOS',
+      payload: true,
+    });
+
+    try {
+      let response = await realAudioService();
+      dispatch({
+        type: 'REAL_AUDIOS',
+        payload: response,
+      });
+      dispatch({
+        type: 'LOAD_AUDIOS',
+        payload: false,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: 'LOAD_AUDIOS',
+        payload: false,
+      });
+    }
+  };
+};
 
 export const getActiveBookings = () => {
   return async (dispatch) => {

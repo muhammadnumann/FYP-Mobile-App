@@ -8,9 +8,9 @@ import CancelBooking from './CancelBooking';
 import ActiveBooking from './ActiveBooking';
 import { getBookings } from '../../../services/SameApiServices';
 import { useTranslation } from 'react-i18next';
-import NewBooking from './NewBooking';
+import RealAudios from './RealAudios';
 
-export default BookingTabs = ({
+export default AudioTabs = ({
   navigation,
   ProfileInfo,
   onCancel,
@@ -22,33 +22,21 @@ export default BookingTabs = ({
   const [routes] = React.useState([
     {
       key: 'first',
-      title: 'New',
+      title: 'Real',
       data: ProfileInfo,
       navigation: navigation,
       onCancel: onCancel,
     },
     {
       key: 'second',
-      title: 'In Progress',
+      title: 'Fake',
       data: ProfileInfo,
       navigation: navigation,
-    },
-    {
-      key: 'third',
-      title: 'Completed',
-      data: ProfileInfo,
-      navigation: navigation,
-    },
-    {
-      key: 'fourth',
-      title: 'Cancelled',
-      data: ProfileInfo,
-      navigation: navigation,
-    },
+    }
   ]);
 
   const renderScene = SceneMap({
-    first: NewBooking,
+    first: RealAudios,
     second: ActiveBooking,
     third: CompleteBooking,
     fourth: CancelBooking,
@@ -86,7 +74,7 @@ export default BookingTabs = ({
                   fontSize: 12,
                 }}
               >
-                {t(route.title)}
+                {route.title}
               </Animated.Text>
             </TouchableOpacity>
           );

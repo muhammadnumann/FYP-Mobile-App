@@ -178,7 +178,7 @@ const ClientPaymentReceipt = ({ route, navigation }) => {
   const totalExpenses = getTotalExpenses(invoiceState?.otherExpenses);
 
   const onPressNotification = () => {
-    navigation.navigate("BookingHomeScreens", { screen: "UserNotification" });
+    navigation.navigate("AudioHomeScreens", { screen: "UserNotification" });
   };
 
   return (

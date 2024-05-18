@@ -10,7 +10,6 @@ import ClientBookingRecepient from "../PaymentScreens/ClientBookingRecepient";
 import UserNotification from "../UserNotifications/UserNotfications";
 
 const UserStack = createStackNavigator();
-const Tab = createBottomTabNavigator();
 
 export const AddAddressScreen = () => {
     return (

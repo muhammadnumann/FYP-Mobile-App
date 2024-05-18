@@ -8,6 +8,7 @@ export const LOGIN_URL = `${API_URL}/auth/sign-in`;
 export const SEND_CODE_URL = `${API_URL}/otp/sendOTP`;
 export const VERIFY_EMAIL_URL = `${API_URL}/otp/verifyOTP`;
 export const RESET_PASSWORD_URL = `${API_URL}/auth/forget-password`;
+export const GET_REAL_AUDIOS_URL = `${API_URL}/service`;
 
 export const GET_SERVICES_URL = `${API_URL}/Dropdowns/get-services-list`;
 export const UPLOAD_FILE_URL = `${API_URL}/File/UploadFiles`;

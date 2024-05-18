@@ -1,16 +1,14 @@
 import * as React from "react";
 import { StyleSheet, Platform, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from "@react-navigation/stack";
 import { CustomIcon } from "../../../components/CustomIcon";
 import { COLORS } from "../../../utils";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { BookingHomeScreens } from "./BookingHomeScreens";
+import { AudioHomeScreens } from "./AudioHomeScreens";
 import { UserProfileScreens } from "./UserProfileScreens";
 import { UserHomeScreens } from "./UserHomeScreens";
 
-const UserStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const UserBottomNavigation = ({ navigation }) => {
@@ -54,10 +52,10 @@ const UserBottomNavigation = ({ navigation }) => {
         }}
       />
       <Tab.Screen
-        name="BookingHomeScreens"
-        component={BookingHomeScreens}
+        name="AudioHomeScreens"
+        component={AudioHomeScreens}
         options={{
-          tabBarLabel: t("my_booking"),
+          tabBarLabel: t("My Audio"),
           tabBarIcon: ({ color, size }) => (
             <CustomIcon name={"BookingIcon"} color={color} />
           ),
@@ -66,7 +64,7 @@ const UserBottomNavigation = ({ navigation }) => {
               {...props}
               onPress={() => {
                 props.onPress();
-                navigation.navigate("BookingHomeScreens", {
+                navigation.navigate("AudioHomeScreens", {
                   screen: "UserBookingHome",
                   params: { index: 0 },
                 });

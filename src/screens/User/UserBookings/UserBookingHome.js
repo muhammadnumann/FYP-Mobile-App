@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import React from "react";
 import CustomHeader from "../../../components/CustomHeader";
 import { sampleListData, ScreenHeight } from "../../../utils";
-import BookingTabs from "./BookingTabs";
+import AudioTabs from "./AudioTabs";
 import EmptyScreen from "../../../components/EmptyScreen";
 import { useToast } from "native-base";
 import SuccessToast from "../../../components/Toast/SuccessToast";
@@ -34,7 +34,7 @@ const UserBookingHome = ({ route, navigation }) => {
         navigation={navigation}
         onPressNotification={onPressNotification}
       />
-      <BookingTabs
+      <AudioTabs
         ProfileInfo={sampleListData}
         navigation={navigation}
         onCancel={onCancel}

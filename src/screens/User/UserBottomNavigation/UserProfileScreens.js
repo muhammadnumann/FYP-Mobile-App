@@ -6,7 +6,6 @@ import UserShareApp from "../UserProfile/UserShareApp";
 import UserEditProfile from "../UserProfile/UserEditProfile";
 import ProfileManageAddress from "../UserProfile/ProfileManageAddress";
 import ProfileChangePassword from "../UserProfile/ProfileChangePassword";
-import ProfileHelp from "../UserProfile/ProfileHelp";
 import ProfileServiceProvider from "../UserProfile/ProfileServiceProvider";
 import SelectCountry from "../../SharedScreens/Location/SelectCountry";
 import SelectState from "../../SharedScreens/Location/SelectState";
@@ -20,6 +19,7 @@ import AddBank from "../UserWallet/AddFunds/AddBank";
 import AddBankAccount from "../UserWallet/AddFunds/AddBankAccount";
 import UserNotification from "../UserNotifications/UserNotfications";
 import CheckoutScreen from "../../CheckOutScreens/CheckOutScreen";
+import UserProfileHome from "../UserProfile/UserProfileHome";
 
 const UserStack = createStackNavigator();
 
@@ -51,7 +51,6 @@ export const UserProfileScreens = () => {
             <UserStack.Screen name="AddFundSuccess" component={AddFundSuccess} />
             <UserStack.Screen name="AddBank" component={AddBank} />
             <UserStack.Screen name="AddBankAccount" component={AddBankAccount} />
-            <UserStack.Screen name="ProfileHelp" component={ProfileHelp} />
             <UserStack.Screen name="Language" component={SelectLanguage} />
             <UserStack.Screen name="country" component={SelectCountry} />
             <UserStack.Screen name="state" component={SelectState} />

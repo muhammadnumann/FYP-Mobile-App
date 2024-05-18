@@ -1,6 +1,6 @@
 import { FlatList, View, Text } from "react-native";
 import React, { useEffect } from "react";
-import CustomBookingCard from "../../../components/Cards/CustomBookingCard";
+import CustomAudioCard from "../../../components/Cards/CustomAudioCard";
 import { AppHeight, COLORS } from "../../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import CustomLoading from "../../../components/Loading/CustomLoading";
@@ -51,7 +51,7 @@ const CancelBooking = ({ route }) => {
               key={index}
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
-              <CustomBookingCard
+              <CustomAudioCard
                 bookings={item}
                 status={"Cancelled"}
                 index={index}

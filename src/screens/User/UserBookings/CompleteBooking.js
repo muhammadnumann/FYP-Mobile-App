@@ -1,6 +1,6 @@
 import { FlatList, View, Text } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import CustomBookingCard from '../../../components/Cards/CustomBookingCard';
+import CustomAudioCard from '../../../components/Cards/CustomAudioCard';
 import { AppHeight, COLORS } from '../../../utils';
 import FeedBackModal from '../../../components/Modals/FeedBackModal';
 import { BookingFeedbackService } from '../../../services/UserServices/UserService';
@@ -76,7 +76,7 @@ const CompleteBooking = ({ route }) => {
       dispatch(getInprogressBookings());
       dispatch(getCompleteBookings());
       dispatch(getDashboardDetails());
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 1 },
       });
@@ -131,7 +131,7 @@ const CompleteBooking = ({ route }) => {
               key={index}
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
-              <CustomBookingCard
+              <CustomAudioCard
                 bookings={item}
                 status={'Completed'}
                 index={index}

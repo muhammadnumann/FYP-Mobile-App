@@ -40,12 +40,6 @@ const SECTIONS = [
   //   color: "#007afe",
   //   label: "Become A Service Provider",
   // },
-  {
-    icon: 'helpCenter',
-    color: '#32c759',
-    label: 'Help Center',
-    type: 'link',
-  },
   { icon: 'faqsIcon', color: '#fd2d54', label: 'FAQs', type: 'link' },
   {
     icon: 'privacyIcon',
@@ -74,18 +68,10 @@ const UserProfileHome = ({ navigation }) => {
       navigation.navigate('UserShareApp');
     } else if (title === 'FAQs') {
       navigation.navigate('UserFaq');
-    } else if (title === 'My Wallet') {
-      navigation.navigate('Wallet');
     } else if (title === 'Privacy Policy') {
       navigation.navigate('UserPrivacy');
-    } else if (title === 'Become A Service Provider') {
-      navigation.navigate('ProfileserviceProvider');
     } else if (title === 'Change Password') {
       navigation.navigate('ProfileChangePassword');
-    } else if (title === 'Manage Address') {
-      navigation.navigate('ProfileManageAddress');
-    } else if (title === 'Help Center') {
-      navigation.navigate('ProfileHelp');
     } else if (title === 'Language') {
       navigation.navigate('Language');
     } else if (title === 'Edit Profile') {

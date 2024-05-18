@@ -8,6 +8,7 @@ import {
   GET_COMPLETED_BOOKING_URL,
   GET_INPROGRESS_BOOKING_URL,
   GET_NEW_BOOKING_URL,
+  GET_REAL_AUDIOS_URL,
   GET_SERVICES_URL,
   GET_SERVICE_BOOKING_URL,
   GET_SERVICE_PROVIDERS_BY_ID_URL,
@@ -19,6 +20,16 @@ import {
   postBearerRequest,
 } from '../ApiServices';
 import { UPDATE_USER_ADDRESS_URL } from '../ApiConstants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+export const realAudioService = async () => {
+  let user = await AsyncStorage.getItem("user");
+  console.log("user", JSON.parse(user).id)
+  const response = await postBearerRequest(GET_REAL_AUDIOS_URL, { userId: JSON.parse(user).id, isReal: true });
+  return response.data;
+};
+
 
 export const getServices = (code) => {
   const { isLoading, data, isError, error } = useQuery(
@@ -50,6 +61,7 @@ export const cancelBooking = async (id) => {
   );
   return response.data;
 };
+
 
 export const activeBookingService = async () => {
   const response = await getBearerRequest(GET_NEW_BOOKING_URL);

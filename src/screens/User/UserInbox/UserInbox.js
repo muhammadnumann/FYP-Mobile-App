@@ -1,8 +1,6 @@
 import { Platform, StyleSheet, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import ChatInput from '../../../components/ChatInput';
 import ChatHeader from '../../../components/ChatHeader';
-import MessagesList from '../../../components/MessagesList';
 import BookingConfirmModal from '../../../components/Modals/BookingConfirmModal';
 import { useToast } from 'native-base';
 import SuccessToast from '../../../components/Toast/SuccessToast';
@@ -205,27 +203,6 @@ const UserInbox = ({ route, navigation }) => {
         }
         onlineStatus={t('online')}
         booking={false}
-      />
-
-      <MessagesList
-        onSwipeToReply={swipeToReply}
-        chat={chat}
-        setShowModal={setShowModal}
-        setMessageId={setMessageId}
-      />
-
-      <ChatInput
-        reply={reply}
-        isLeft={isLeft}
-        closeReply={closeReply}
-        username={chatInfo?.fullName}
-        message={message}
-        setMessage={setMessage}
-        onSend={onSend}
-        image={imageUri}
-        setImage={setImageUri}
-        handleAddImage={handleAddImage}
-        onSendMsg={onSendMsg}
       />
 
       <BookingConfirmModal

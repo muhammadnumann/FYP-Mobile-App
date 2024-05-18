@@ -1,6 +1,6 @@
 import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import CustomBookingCard from '../../../components/Cards/CustomBookingCard';
+import CustomAudioCard from '../../../components/Cards/CustomAudioCard';
 import { AppHeight, COLORS } from '../../../utils';
 import {
   FinishBookingService,
@@ -12,26 +12,26 @@ import SuccessToast from '../../../components/Toast/SuccessToast';
 import CustomLoading from '../../../components/Loading/CustomLoading';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getActiveBookings,
   getCancelBookings,
   getCompleteBookings,
   getDashboardDetails,
+  getRealAudios,
 } from '../../../store/client/ClientActions';
 import { useTranslation } from 'react-i18next';
 
-const NewBooking = ({ route }) => {
+const RealAudios = ({ route }) => {
   const { navigation } = route;
   const [loading, setLoading] = useState(false);
-  const activeBookings = useSelector(
-    (state) => state.ClientReducer.activeBookings
+  const realAudios = useSelector(
+    (state) => state.ClientReducer.realAudios
   );
-  const loadBookings = useSelector((state) => state.ClientReducer.loadBookings);
+  const loadAudios = useSelector((state) => state.ClientReducer.loadAudios);
   const dispatch = useDispatch();
   const toast = useToast();
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getActiveBookings());
+    dispatch(getRealAudios());
   }, []);
 
   const CancelBooking = async (id) => {
@@ -42,7 +42,7 @@ const NewBooking = ({ route }) => {
       SuccessToast(t('Success'), t('booking_cancel_msg'));
 
       navigation.navigate('Home');
-      dispatch(getActiveBookings());
+      dispatch(getRealAudios());
       dispatch(getCancelBookings());
       dispatch(getDashboardDetails());
       setLoading(false);
@@ -57,7 +57,7 @@ const NewBooking = ({ route }) => {
     navigation.navigate('ClientPaymentReceipt', { data: bookings });
   };
 
-  if (loadBookings) {
+  if (loadAudios) {
     return (
       <CustomLoading
         content={t('loading') + ' ' + t('new_booking') + '...'}
@@ -77,7 +77,7 @@ const NewBooking = ({ route }) => {
 
   return (
     <View style={{ height: AppHeight(80), backgroundColor: COLORS.lightGrey }}>
-      {activeBookings?.length === 0 ? (
+      {realAudios?.services?.length === 0 ? (
         <View
           style={{
             flex: 1,
@@ -91,14 +91,14 @@ const NewBooking = ({ route }) => {
         </View>
       ) : (
         <FlatList
-          data={activeBookings}
+          data={realAudios?.services}
           style={{ paddingBottom: AppHeight(30) }}
           renderItem={({ item, index }) => (
             <View
               key={index}
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
-              <CustomBookingCard
+              <CustomAudioCard
                 bookings={item}
                 status={'Accepted'}
                 index={index}
@@ -108,11 +108,10 @@ const NewBooking = ({ route }) => {
               />
             </View>
           )}
-          keyExtractor={(item) => item.id.toString()}
         />
       )}
     </View>
   );
 };
 
-export default NewBooking;
+export default RealAudios;

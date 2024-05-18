@@ -41,22 +41,8 @@ export default function UserEditProfile({ navigation }) {
     email: '',
     number: '',
     dob: '',
-    user_name: '',
-    user_image: null,
-    idCardNumber: '',
-    country: '',
-    state: '',
-    address: '',
-    city: '',
-    selected_image: '',
-    countryId: '',
-    stateId: null,
-    cityId: null,
-    homeAppartmentNumber: '',
-    markAs: '',
     gender: '',
-    firstName: '',
-    lastName: '',
+    fullName: '',
   });
   const [errors, setErrors] = useState({});
   const { isOpen, onOpen, onClose } = useDisclose();
@@ -118,27 +104,11 @@ export default function UserEditProfile({ navigation }) {
 
   const updateSate = (profile) => {
     if (profile) {
-      handleOnchange(profile.title, 'user_name');
       handleOnchange(profile.email, 'email');
       handleOnchange(profile.phoneNumber, 'number');
       handleOnchange(profile.dob, 'dob');
       handleOnchange(profile.gender, 'gender');
-      handleOnchange(profile.cityId, 'cityId');
-      handleOnchange(profile.firstName, 'firstName');
-      handleOnchange(profile.lastName, 'lastName');
-      handleOnchange(profile.stateId, 'stateId');
-      handleOnchange(profile.countryId, 'countryId');
-      handleOnchange(profile.address, 'address');
-      handleOnchange(profile.stateName, 'state');
-      handleOnchange(profile.cityName, 'city');
-      handleOnchange(profile.countryName, 'country');
-      handleOnchange(profile.homeAppartmentNumber, 'homeAppartmentNumber');
-      handleOnchange(profile.idCardNumber, 'idCardNumber');
-
-      handleOnchange(
-        inputs.selected_image !== '' ? inputs.user_image : profile.profileImage,
-        'selected_image'
-      );
+      handleOnchange(profile.firstName, 'fullName');
     }
   };
   const handleOnchange = (text, input) => {
@@ -150,55 +120,18 @@ export default function UserEditProfile({ navigation }) {
   };
 
   const hanldeEditProfile = () => {
-    if (inputs?.country === '') {
-      WarnToast('Please select a country');
-    } else {
-      const data = {
-        title: inputs.user_name,
-        email: inputs.email,
-        // phoneNumber: inputs.number,
-        dob: formatDate(inputs.dob),
-        profileImage: inputs.selected_image,
-        gender: inputs.gender,
-        firstName: inputs.firstName,
-        lastName: inputs.lastName,
-        cityId: inputs.cityId,
-        stateId: inputs.stateId,
-        countryId: inputs.countryId,
-        address: inputs.address,
-        homeAppartmentNumber: inputs.homeAppartmentNumber,
-        idCardNumber: inputs.idCardNumber,
-      };
 
-      mutate(data);
-    }
+    const data = {
+      email: inputs.email,
+      dob: formatDate(inputs.dob),
+      gender: inputs.gender,
+      fullName: inputs.firstName,
+    };
+
+    mutate(data);
+
   };
 
-  const onPressCountry = () => {
-    navigation.navigate('country', {
-      handleOnchange,
-      handleError,
-      name: 'country',
-    });
-  };
-
-  const onPressState = () => {
-    navigation.navigate('state', {
-      handleOnchange,
-      handleError,
-      name: 'state',
-      countryId: inputs.countryId,
-    });
-  };
-
-  const onPressCity = () => {
-    navigation.navigate('city', {
-      handleOnchange,
-      handleError,
-      name: 'city',
-      stateId: inputs.stateId,
-    });
-  };
 
   let user_profile_image = urlFormat(userDetails?.data?.profileImage);
 
@@ -208,7 +141,7 @@ export default function UserEditProfile({ navigation }) {
     >
       <CustomHeader title='Edit Profile' back navigation={navigation} />
       <ScrollView>
-        <ImageBackground
+        {/* <ImageBackground
           source={{
             uri:
               inputs?.user_image === null
@@ -228,7 +161,7 @@ export default function UserEditProfile({ navigation }) {
           >
             <CustomIcon name={'cameraIcon'} />
           </TouchableOpacity>
-        </ImageBackground>
+        </ImageBackground> */}
 
         <View
           style={{
@@ -238,30 +171,12 @@ export default function UserEditProfile({ navigation }) {
           }}
         >
           <CustomInput
-            onChangeText={(text) => handleOnchange(text, 'user_name')}
-            onFocus={() => handleError(null, 'user_name')}
+            onChangeText={(text) => handleOnchange(text, 'fullName')}
+            onFocus={() => handleError(null, 'fullName')}
             IconName={'role'}
-            placeholder='User Name'
-            value={inputs.user_name}
-            // error={errors.email}
-          />
-
-          <CustomInput
-            onChangeText={(text) => handleOnchange(text, 'firstName')}
-            onFocus={() => handleError(null, 'firstName')}
-            IconName={'role'}
-            placeholder={t('firstName')}
-            value={inputs.firstName}
-            // error={errors.email}
-          />
-
-          <CustomInput
-            onChangeText={(text) => handleOnchange(text, 'lastName')}
-            onFocus={() => handleError(null, 'lastName')}
-            IconName={'role'}
-            placeholder={t('lastName')}
-            value={inputs.lastName}
-            // error={errors.email}
+            placeholder={t('fullName')}
+            value={inputs.fullName}
+          // error={errors.email}
           />
 
           <CustomInput
@@ -270,7 +185,7 @@ export default function UserEditProfile({ navigation }) {
             IconName={'email'}
             placeholder={t('email')}
             value={inputs.email}
-            // error={errors.email}
+          // error={errors.email}
           />
 
           <CustomInput
@@ -280,7 +195,7 @@ export default function UserEditProfile({ navigation }) {
             placeholder='number'
             value={inputs.number}
             readOnly={true}
-            // error={errors.email}
+          // error={errors.email}
           />
 
           <DatePicker
@@ -304,115 +219,7 @@ export default function UserEditProfile({ navigation }) {
             name='gender'
             value={inputs.gender}
           />
-          <CustomInput
-            onChangeText={(text) => handleOnchange(text, 'idCardNumber')}
-            onFocus={() => handleError(null, 'idCardNumber')}
-            IconName={'CardIcon'}
-            placeholder={t('idCardNumber')}
-            value={inputs.idCardNumber}
-            error={errors.idCardNumber}
-          />
 
-          {/* <CustomCountryPickerModal
-            handleOnchange={handleOnchange}
-            name="country"
-          /> */}
-
-          <SelectButton
-            placeholder={t('select_country')}
-            IconName='LocationIcon'
-            value={inputs.country}
-            navigation={onPressCountry}
-            error={errors.country}
-          />
-
-          <SelectButton
-            placeholder={t('select_state')}
-            IconName='LocationIcon'
-            value={inputs.state}
-            navigation={onPressState}
-            error={errors.state}
-          />
-
-          <SelectButton
-            error={errors.city}
-            placeholder={t('select_city')}
-            IconName='LocationIcon'
-            value={inputs.city}
-            navigation={onPressCity}
-          />
-
-          {/* <CustomInput
-            onChangeText={(text) =>
-              handleOnchange(text, "homeAppartmentNumber")
-            }
-            onFocus={() => handleError(null, "homeAppartmentNumber")}
-            IconName="LocationIcon"
-            placeholder="Apartment / House No."
-            error={errors.homeAppartmentNumber}
-            value={inputs.homeAppartmentNumber}
-          /> */}
-
-          <CustomInput
-            onChangeText={(text) => handleOnchange(text, 'address')}
-            onFocus={() => handleError(null, 'address')}
-            IconName={'LocationIcon'}
-            placeholder={t('complete_address')}
-            value={inputs.address}
-            error={errors.address}
-          />
-
-          <Text style={{ fontWeight: 'bold', marginTop: 10 }}>
-            {t('mark_as')}
-          </Text>
-
-          <Radio.Group
-            name='exampleGroup'
-            defaultValue='1'
-            accessibilityLabel='favorite colorscheme'
-          >
-            <Stack
-              direction={{
-                base: 'row',
-                md: 'row',
-              }}
-              alignItems={{
-                base: 'flex-start',
-                md: 'center',
-              }}
-              space={4}
-              w='75%'
-              maxW='300px'
-            >
-              <Radio
-                value='1'
-                colorScheme='blue'
-                size='sm'
-                my={1}
-                onPress={() => handleOnchange('Home', 'markAs')}
-              >
-                {t('Home')}
-              </Radio>
-              <Radio
-                value='2'
-                colorScheme='blue'
-                size='sm'
-                my={1}
-                onPress={() => handleOnchange('Office', 'markAs')}
-              >
-                {t('Office')}
-              </Radio>
-              <Radio
-                value='3'
-                colorScheme='blue'
-                size='sm'
-                my={1}
-                onPress={() => handleOnchange('Other', 'markAs')}
-              >
-                {t('Other')}
-              </Radio>
-            </Stack>
-          </Radio.Group>
         </View>
 
         <View style={styles.viewBtn}>

@@ -79,7 +79,7 @@ const UserNotification = ({ navigation }) => {
   const onPressNotification = (notification) => {
     markAsRead(notification.id);
     if (notification.type === 'AcceptBySPBooking') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'AgentProfileScreen',
         params: {
           ProfileInfo: notification,
@@ -89,13 +89,13 @@ const UserNotification = ({ navigation }) => {
         },
       });
     } else if (notification.type === 'EndBooking') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'ClientPaymentReceipt',
         params: { data: notification },
       });
       // getBookingDetails(notification.bookingId);
     } else if (notification.type === 'Message') {
-      navigation.navigate('BookingHomeScreens', {
+      navigation.navigate('AudioHomeScreens', {
         screen: 'UserInbox',
         params: {
           chatInfo: {
