@@ -28,7 +28,7 @@ const UserBookingHome = ({ route, navigation }) => {
       }}
     >
       <CustomHeader
-        title={t("my_bookings")}
+        title={t("my_audios")}
         icon
         back
         navigation={navigation}

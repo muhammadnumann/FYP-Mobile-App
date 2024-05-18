@@ -33,17 +33,6 @@ const CustomAudioCard = React.memo(({
 
   return (
     <View style={styles.container}>
-      <View style={styles.profileSection}>
-
-      </View>
-
-      <View
-        style={{
-          borderWidth: 1,
-          borderColor: COLORS.lightGrey,
-          marginTop: 15,
-        }}
-      />
       <View>
         <View
           style={{ flexDirection: 'row', justifyContent: 'space-between' }}
@@ -52,11 +41,17 @@ const CustomAudioCard = React.memo(({
             <Text>{bookings?.orignalFileName}</Text>
           </View>
           <View style={{ width: AppWidth(100) }}>
-            
+
           </View>
         </View>
       </View>
-
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: COLORS.lightGrey,
+          marginTop: 15,
+        }}
+      />
 
     </View>
   );

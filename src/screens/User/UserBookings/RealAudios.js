@@ -60,7 +60,7 @@ const RealAudios = ({ route }) => {
   if (loadAudios) {
     return (
       <CustomLoading
-        content={t('loading') + ' ' + t('new_booking') + '...'}
+        content={t('loading') + ' ' + t('audio_list') + '...'}
         top={AppHeight(30)}
       />
     );
@@ -69,12 +69,13 @@ const RealAudios = ({ route }) => {
   if (loading) {
     return (
       <CustomLoading
-        content={t('loading') + ' ' + t('new_booking') + '...'}
+        content={t('loading') + ' ' + t('audio_list') + '...'}
         top={AppHeight(30)}
       />
     );
   }
 
+  console.log(realAudios)
   return (
     <View style={{ height: AppHeight(80), backgroundColor: COLORS.lightGrey }}>
       {realAudios?.services?.length === 0 ? (
@@ -86,7 +87,7 @@ const RealAudios = ({ route }) => {
           }}
         >
           <Text style={{ color: COLORS.grey }}>
-            {t('new_booking_placeholder')}
+            {t('audio_placeholder')}
           </Text>
         </View>
       ) : (

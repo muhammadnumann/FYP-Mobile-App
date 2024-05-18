@@ -55,7 +55,7 @@ const UserBottomNavigation = ({ navigation }) => {
         name="AudioHomeScreens"
         component={AudioHomeScreens}
         options={{
-          tabBarLabel: t("My Audio"),
+          tabBarLabel: t("my_audios"),
           tabBarIcon: ({ color, size }) => (
             <CustomIcon name={"BookingIcon"} color={color} />
           ),

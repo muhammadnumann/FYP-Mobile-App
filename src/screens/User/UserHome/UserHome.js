@@ -262,7 +262,7 @@ const UserHome = ({ navigation }) => {
       }}
     >
       <CustomHeader
-        title={t('services')}
+        title={t('home')}
         icon
         navigation={navigation}
         // search={true}
