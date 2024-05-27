@@ -86,7 +86,7 @@ export async function postRequest(url, data) {
   }
 }
 
-export async function postBearerRequest(url, data) {
+export async function postBearerRequest(url, data, opt) {
   console.log(url);
 
   try {
@@ -94,7 +94,9 @@ export async function postBearerRequest(url, data) {
     const options = {
       headers: {
         Authorization: token,
+        ...opt
       },
+
     };
     let res = await axios.post(url, data, options);
     return res;

@@ -9,6 +9,8 @@ export const SEND_CODE_URL = `${API_URL}/otp/sendOTP`;
 export const VERIFY_EMAIL_URL = `${API_URL}/otp/verifyOTP`;
 export const RESET_PASSWORD_URL = `${API_URL}/auth/forget-password`;
 export const GET_REAL_AUDIOS_URL = `${API_URL}/service`;
+export const UPLOAD_AUDIOS_URL = `${API_URL}/service/add`;
+export const USER_GET_DASHB_URL = `${API_URL}/dashboard/get-detail`;
 
 export const GET_SERVICES_URL = `${API_URL}/Dropdowns/get-services-list`;
 export const UPLOAD_FILE_URL = `${API_URL}/File/UploadFiles`;
@@ -49,7 +51,6 @@ export const GET_SERVICE_PROVIDERS_BY_ID_URL = `${API_URL}/Users/get-service-pro
 export const UPDATE_USER_ADDRESS_URL = `${API_URL}/Users/update-user-address`;
 
 //API End Points for User Dashboard
-export const USER_GET_DASHB_URL = `${API_URL}/Dashboard/get-detail`;
 export const USER_GET_DASHB_SP_URL = `${API_URL}/Dashboard/get-detail-sp`;
 
 export const USER_PROMOTIONS_URL = `${API_URL}/Promotions/get-promotions`;

@@ -13,6 +13,7 @@ import {
   GET_SERVICE_BOOKING_URL,
   GET_SERVICE_PROVIDERS_BY_ID_URL,
   GET_SP_AVAILABILITY_URL,
+  UPLOAD_AUDIOS_URL,
 } from '../ApiConstants';
 import {
   getBearerRequest,
@@ -27,6 +28,15 @@ export const realAudioService = async () => {
   let user = await AsyncStorage.getItem("user");
   console.log("user", JSON.parse(user).id)
   const response = await postBearerRequest(GET_REAL_AUDIOS_URL, { userId: JSON.parse(user).id, isReal: true });
+  return response.data;
+};
+
+export const uploadAudioService = async (file) => {
+  let user = await AsyncStorage.getItem("user");
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('userId', JSON.parse(user).id);
+  const response = await postBearerRequest(UPLOAD_AUDIOS_URL, formData, { 'Content-Type': 'multipart/form-data', });
   return response.data;
 };
 

@@ -35,21 +35,14 @@ import FeedBackModal from '../../../components/Modals/FeedBackModal';
 
 const SECTIONS = [
   {
-    icon: 'inProgressIcon',
-    label: 'Services In Progress',
+    label: 'Total',
   },
   {
-    icon: 'newJobIcon',
-    label: 'Scheduled Services',
+    label: 'Real',
   },
   {
-    icon: 'jobIcon',
-    label: 'Work History',
+    label: 'Fake',
   },
-  // {
-  //   icon: "ServiceProviderWallet",
-  //   label: "My Wallet",
-  // },
 ];
 
 const UserHome = ({ navigation }) => {
@@ -79,7 +72,6 @@ const UserHome = ({ navigation }) => {
   useEffect(() => {
     dispatch(getNotifications());
     dispatch(getDashboardDetails());
-    getPromotions();
 
     getCurrentLocation()
       .then((location) =>
@@ -94,16 +86,7 @@ const UserHome = ({ navigation }) => {
       .catch((error) => console.warn(error));
   }, []);
 
-  const getPromotions = async () => {
-    try {
-      let response = await getBearerRequest(USER_PROMOTIONS_URL);
 
-      console.log(response.data)
-      handleOnchange(response.data, 'promotions');
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
 
   const getBookingDetails = async (id) => {
     try {
@@ -211,22 +194,17 @@ const UserHome = ({ navigation }) => {
       case 0:
         return {
           ...section,
-          count: dashDetail?.inProgressServicesCount,
+          count: dashDetail?.all,
         };
       case 1:
         return {
           ...section,
-          count: dashDetail?.scheduledServicesCount,
+          count: dashDetail?.real,
         };
       case 2:
         return {
           ...section,
-          count: dashDetail?.workHistoryCount,
-        };
-      case 3:
-        return {
-          ...section,
-          count: dashDetail?.walletBalance,
+          count: dashDetail?.fake,
         };
       default:
         return section;
@@ -234,19 +212,17 @@ const UserHome = ({ navigation }) => {
   });
 
   const onPressDashCard = (value) => {
-    if (value === 'My Wallet') {
-      navigation.navigate('UserProfileHome', { screen: 'Wallet' });
-    } else if (value === 'Services In Progress') {
-      navigation.navigate('AudioHomeScreens', {
-        screen: 'UserBookingHome',
-        params: { index: 1 },
-      });
-    } else if (value === 'Scheduled Services') {
+    if (value === 'Total') {
       navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 0 },
       });
-    } else if (value === 'Work History') {
+    } else if (value === 'Real') {
+      navigation.navigate('AudioHomeScreens', {
+        screen: 'UserBookingHome',
+        params: { index: 1 },
+      });
+    } else if (value === 'Fake') {
       navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',
         params: { index: 2 },
@@ -329,9 +305,7 @@ const UserHome = ({ navigation }) => {
                     justifyContent: 'space-between',
                   }}
                 >
-                  <CustomIcon name={icon} color={COLORS.primary} />
-
-                  <Text style={[{ fontSize: 30 }]}>{count}</Text>
+                  <Text style={[{ fontSize: 30, color: COLORS.primary }]}>{count}</Text>
                 </View>
 
                 <View
@@ -368,9 +342,9 @@ const styles = StyleSheet.create({
   item: {
     // textAlign: "center",
     fontWeight: 600,
-    marginTop: AppHeight(4),
-    fontSize: 15,
+    marginTop: AppHeight(1),
     fontSize: AppFontSize(1.3),
+    fontSize: 25,
   },
   serviceCard: {
     // alignItems: "center",

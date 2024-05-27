@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { USER_GET_DASHB_URL } from '../../services/ApiConstants';
-import { getBearerRequest } from '../../services/ApiServices';
+import { getBearerRequest, postBearerRequest } from '../../services/ApiServices';
 import {
   CompletedBookingService,
   InprogressBookingService,
@@ -35,6 +36,25 @@ export const getRealAudios = () => {
   };
 };
 
+export const getDashboardDetails = () => {
+  return async (dispatch) => {
+    try {
+      let user = await AsyncStorage.getItem("user");
+      console.log(JSON.parse(user).id)
+
+      let response = await postBearerRequest(USER_GET_DASHB_URL, { userId: JSON.parse(user).id })
+      console.log(response.data)
+      dispatch({
+        type: 'DASHBOARD_DETAILS',
+        payload: response.data.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+
 export const getActiveBookings = () => {
   return async (dispatch) => {
     dispatch({
@@ -61,6 +81,7 @@ export const getActiveBookings = () => {
     }
   };
 };
+
 
 export const getInprogressBookings = () => {
   return async (dispatch) => {
@@ -145,16 +166,3 @@ export const getCancelBookings = () => {
   };
 };
 
-export const getDashboardDetails = () => {
-  return async (dispatch) => {
-    try {
-      let response = await getBearerRequest(USER_GET_DASHB_URL);
-      dispatch({
-        type: 'DASHBOARD_DETAILS',
-        payload: response.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
