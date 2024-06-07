@@ -8,7 +8,6 @@ import {
   Image,
 } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapView, { Marker } from "react-native-maps";
 import { GOOGLE_MAP_KEY } from "../../../../utils/googleMapKey";
 import { useSelector } from "react-redux";
 import {
@@ -158,27 +157,6 @@ export default function AddBookingAddress({ route, navigation }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <MapView
-        ref={mapRef}
-        style={styles.map}
-        initialRegion={selectedLocation || region}
-        region={selectedLocation ? selectedLocation : null}
-        onPress={handleMapPress}
-        provider="google"
-        onMapReady={handleMapReady}
-        onRegionChangeComplete={handleRegionChangeComplete}
-      >
-        {/* {markerCoordinate && (
-          <Marker
-            // coordinate={markerCoordinate}
-            // anchor={{ x: 0.5, y: 0.5 }}
-            coordinate={region}
-
-            // draggable
-            // onDragEnd={(e) => setMarkerCoordinate(e.nativeEvent.coordinate)}
-          />
-        )} */}
-      </MapView>
 
       <View
         style={[

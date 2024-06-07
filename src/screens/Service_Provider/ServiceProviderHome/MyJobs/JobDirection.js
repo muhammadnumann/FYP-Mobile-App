@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import MapView, { Marker, Polyline } from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
 import CustomHeader from '../../../../components/CustomHeader';
 import { AppHeight, AppWidth, COLORS, urlFormat } from '../../../../utils';
 import { GOOGLE_MAP_KEY } from '../../../../utils/googleMapKey';
@@ -109,62 +107,7 @@ const JobDirection = ({ route, navigation }) => {
       <CustomHeader title='Direction on Map' back navigation={navigation} />
 
       <View style={styles.container}>
-        <MapView
-          ref={mapRef}
-          style={styles.map}
-          initialRegion={{
-            latitude: origin.latitude,
-            longitude: origin.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA,
-          }}
-        >
-          <Marker
-            draggable
-            coordinate={origin}
-            onDragEnd={(direction) =>
-              setOrigin(direction.nativeEvent.coordinate)
-            }
-          />
-          <Marker
-            draggable
-            coordinate={destination}
-            onDragEnd={(direction) =>
-              setDestination(direction.nativeEvent.coordinate)
-            }
-          >
-            <Image
-              source={{
-                //  uri: data.avatarUrl
-                uri: urlFormat(data?.clientImage),
-              }}
-              style={{ height: 35, width: 35, borderRadius: 50 }}
-            />
-          </Marker>
-          <MapViewDirections
-            origin={origin}
-            destination={destination}
-            apikey={GOOGLE_MAP_KEY}
-            strokeColor={COLORS.primary}
-            strokeWidth={5}
-            onReady={(result) => {
-              fetchTime(result.distance, result.duration),
-                mapRef.current.fitToCoordinates(result.coordinates, {
-                  edgePadding: {
-                    // right: 30,
-                    // bottom: 300,
-                    // left: 30,
-                    // top: 100,
-                  },
-                });
-            }}
-          />
-          {/* <Polyline
-          coordinates={[origin, destination]}
-          strokeColor="pink"
-          strokeWidth={1}
-        /> */}
-        </MapView>
+
         <View
           style={{
             position: 'absolute',
