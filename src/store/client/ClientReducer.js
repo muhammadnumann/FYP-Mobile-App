@@ -16,6 +16,11 @@ export default (state = initialState, action) => {
         ...state, //copy all previous states
         realAudios: action.payload,
       };
+    case "FAKE_AUDIOS":
+      return {
+        ...state, //copy all previous states
+        fakeAudios: action.payload,
+      };
     case "LOAD_AUDIOS":
       return {
         ...state, //copy all previous states

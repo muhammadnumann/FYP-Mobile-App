@@ -23,11 +23,7 @@ const SECTIONS = [
   {
     title: "faq_q_4",
     content: "faq_a_4",
-  },
-  {
-    title: "faq_q_5",
-    content: "faq_a_5",
-  },
+  }
 ];
 
 const ProfileFaq = ({ navigation }) => {

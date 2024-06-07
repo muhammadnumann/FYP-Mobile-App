@@ -75,10 +75,9 @@ const RealAudios = ({ route }) => {
     );
   }
 
-  console.log(realAudios)
   return (
     <View style={{ height: AppHeight(80), backgroundColor: COLORS.lightGrey }}>
-      {realAudios?.services?.length === 0 ? (
+      {realAudios?.length === 0 ? (
         <View
           style={{
             flex: 1,
@@ -92,7 +91,7 @@ const RealAudios = ({ route }) => {
         </View>
       ) : (
         <FlatList
-          data={realAudios?.services}
+          data={realAudios}
           style={{ paddingBottom: AppHeight(30) }}
           renderItem={({ item, index }) => (
             <View
@@ -100,7 +99,7 @@ const RealAudios = ({ route }) => {
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
               <CustomAudioCard
-                bookings={item}
+                audios={item}
                 status={'Accepted'}
                 index={index}
                 onButtonPress={CancelBooking}

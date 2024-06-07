@@ -59,10 +59,6 @@ const UserHome = ({ navigation }) => {
   const user = useSelector((state) => state.AuthReducer.user);
   const [selectSearch, setSelectSearch] = useState(false);
 
-  const feedBackVisible = useSelector(
-    (state) => state.NotificationReducer.feedBackVisible
-  );
-
   const dashDetail = useSelector((state) => state.ClientReducer.dashDetail);
 
   const loadNotification = useSelector(
@@ -195,16 +191,22 @@ const UserHome = ({ navigation }) => {
         return {
           ...section,
           count: dashDetail?.all,
+          icon: 'totalAudioIcon',
+          color: 'rgba(98, 106, 255, 0.2)'
         };
       case 1:
         return {
           ...section,
           count: dashDetail?.real,
+          icon: 'realAudioIcon',
+          color: 'rgba(121, 170, 0, 0.1)'
         };
       case 2:
         return {
           ...section,
           count: dashDetail?.fake,
+          icon: 'fakeAudioIcon',
+          color: 'rgba(255, 0, 0, 0.1)'
         };
       default:
         return section;
@@ -263,19 +265,8 @@ const UserHome = ({ navigation }) => {
         </View>
       ) : null}
 
-      <CustomImageSlider onPressBook={onPressBook} data={inputs?.promotions} />
 
-      <View style={styles.viewBtn}>
-        <CustomButton
-          title={t('New') + ' ' + t('services')}
-          onPress={() =>
-            navigation.navigate('AllServices', {
-              subCatAvailable: false,
-              address: 'Base',
-            })
-          }
-        />
-      </View>
+
 
       <View
         style={{
@@ -296,7 +287,11 @@ const UserHome = ({ navigation }) => {
               key={index}
             >
               <TouchableOpacity
-                style={styles.serviceCard}
+                style={{
+                  backgroundColor: color,
+                  borderColor: color,
+                  ...styles.serviceCard
+                }}
                 onPress={() => onPressDashCard(label)}
               >
                 <View
@@ -305,7 +300,9 @@ const UserHome = ({ navigation }) => {
                     justifyContent: 'space-between',
                   }}
                 >
-                  <Text style={[{ fontSize: 30, color: COLORS.primary }]}>{count}</Text>
+                  <CustomIcon name={icon} color={COLORS.primary} />
+
+                  <Text style={[{ fontSize: 30 }]}>{count}</Text>
                 </View>
 
                 <View
@@ -322,12 +319,18 @@ const UserHome = ({ navigation }) => {
         })}
       </View>
 
-      {feedBackVisible ? (
-        <ClientFeedBackModal
-          visible={feedBackVisible && feedBackVisible}
-          dismiss={() => dispatch({ type: 'FEEDBACK_VISIBLE', payload: false })}
+      <View style={styles.viewBtn}>
+        <CustomButton
+          title={t('New') + ' Audio'}
+          onPress={() =>
+            navigation.navigate('AllServices', {
+              subCatAvailable: false,
+              address: 'Base',
+            })
+          }
         />
-      ) : null}
+      </View>
+
     </View>
   );
 };
@@ -355,8 +358,6 @@ const styles = StyleSheet.create({
     marginTop: 13,
     borderWidth: 2,
     borderRadius: 12,
-    borderColor: COLORS.lightGrey,
-    backgroundColor: COLORS.primaryLight,
   },
 
   viewBtn: {

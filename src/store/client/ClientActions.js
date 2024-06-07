@@ -6,6 +6,7 @@ import {
   InprogressBookingService,
   activeBookingService,
   cancelledBookingService,
+  fakeAudioService,
   realAudioService,
 } from '../../services/UserServices/UserService';
 
@@ -27,7 +28,33 @@ export const getRealAudios = () => {
         payload: false,
       });
     } catch (error) {
-      console.log(error);
+
+      dispatch({
+        type: 'LOAD_AUDIOS',
+        payload: false,
+      });
+    }
+  };
+};
+export const getFakeAudios = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'LOAD_AUDIOS',
+      payload: true,
+    });
+
+    try {
+      let response = await fakeAudioService();
+      dispatch({
+        type: 'FAKE_AUDIOS',
+        payload: response,
+      });
+      dispatch({
+        type: 'LOAD_AUDIOS',
+        payload: false,
+      });
+    } catch (error) {
+
       dispatch({
         type: 'LOAD_AUDIOS',
         payload: false,
@@ -39,14 +66,10 @@ export const getRealAudios = () => {
 export const getDashboardDetails = () => {
   return async (dispatch) => {
     try {
-      let user = await AsyncStorage.getItem("user");
-      console.log(JSON.parse(user).id)
-
-      let response = await postBearerRequest(USER_GET_DASHB_URL, { userId: JSON.parse(user).id })
-      console.log(response.data)
+      let response = await getBearerRequest(USER_GET_DASHB_URL)
       dispatch({
         type: 'DASHBOARD_DETAILS',
-        payload: response.data.data,
+        payload: response.data,
       });
     } catch (error) {
       console.log(error);

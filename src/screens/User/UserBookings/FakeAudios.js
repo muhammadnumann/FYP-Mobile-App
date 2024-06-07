@@ -12,32 +12,26 @@ import SuccessToast from '../../../components/Toast/SuccessToast';
 import CustomLoading from '../../../components/Loading/CustomLoading';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getActiveBookings,
   getCancelBookings,
-  getCompleteBookings,
   getDashboardDetails,
-  getInprogressBookings,
+  getFakeAudios
 } from '../../../store/client/ClientActions';
 import { useTranslation } from 'react-i18next';
-import { useIsFocused } from '@react-navigation/native';
 
-const ActiveBooking = ({ route }) => {
+const FakeAudios = ({ route }) => {
   const { navigation } = route;
-  const isFocused = useIsFocused();
   const [loading, setLoading] = useState(false);
-  const inprogressBookings = useSelector(
-    (state) => state.ClientReducer.inprogressBookings
+  const fakeAudios = useSelector(
+    (state) => state.ClientReducer.fakeAudios
   );
-  const loadBookings = useSelector((state) => state.ClientReducer.loadBookings);
+  const loadAudios = useSelector((state) => state.ClientReducer.loadAudios);
   const dispatch = useDispatch();
   const toast = useToast();
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (isFocused == true) {
-      dispatch(getInprogressBookings());
-    }
-  }, [isFocused]);
+    dispatch(getFakeAudios());
+  }, []);
 
   const CancelBooking = async (id) => {
     setLoading(true);
@@ -45,11 +39,11 @@ const ActiveBooking = ({ route }) => {
       let response = await cancelBooking(id);
 
       SuccessToast(t('Success'), t('booking_cancel_msg'));
-      dispatch(getDashboardDetails());
-      dispatch(getInprogressBookings());
-      dispatch(getCancelBookings());
-      navigation.push('Home');
 
+      navigation.navigate('Home');
+      dispatch(getFakeAudios());
+      dispatch(getCancelBookings());
+      dispatch(getDashboardDetails());
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -59,13 +53,13 @@ const ActiveBooking = ({ route }) => {
   };
 
   const FinishBooking = async (bookings) => {
-    navigation.navigate('ClientPaymentReceipt', { data: bookings, bookings });
+    navigation.navigate('ClientPaymentReceipt', { data: bookings });
   };
 
-  if (loadBookings) {
+  if (loadAudios) {
     return (
       <CustomLoading
-        content={t('loading') + ' ' + t('active_booking') + '...'}
+        content={t('loading') + ' ' + t('audio_list') + '...'}
         top={AppHeight(30)}
       />
     );
@@ -74,14 +68,15 @@ const ActiveBooking = ({ route }) => {
   if (loading) {
     return (
       <CustomLoading
-        content={t('loading') + ' ' + t('active_booking') + '...'}
+        content={t('loading') + ' ' + t('audio_list') + '...'}
         top={AppHeight(30)}
       />
     );
   }
+
   return (
-    <View style={{ height: AppHeight(75), backgroundColor: COLORS.lightGrey }}>
-      {inprogressBookings?.length === 0 ? (
+    <View style={{ height: AppHeight(80), backgroundColor: COLORS.lightGrey }}>
+      {fakeAudios?.length === 0 ? (
         <View
           style={{
             flex: 1,
@@ -90,12 +85,12 @@ const ActiveBooking = ({ route }) => {
           }}
         >
           <Text style={{ color: COLORS.grey }}>
-            {t('active_booking_placeholder')}
+            {t('audio_placeholder')}
           </Text>
         </View>
       ) : (
         <FlatList
-          data={inprogressBookings}
+          data={fakeAudios}
           style={{ paddingBottom: AppHeight(30) }}
           renderItem={({ item, index }) => (
             <View
@@ -103,8 +98,8 @@ const ActiveBooking = ({ route }) => {
               style={{ paddingHorizontal: 10, paddingVertical: 10 }}
             >
               <CustomAudioCard
-                bookings={item}
-                status={'Active'}
+                audios={item}
+                status={'Accepted'}
                 index={index}
                 onButtonPress={CancelBooking}
                 onSuccessPress={FinishBooking}
@@ -112,11 +107,10 @@ const ActiveBooking = ({ route }) => {
               />
             </View>
           )}
-          keyExtractor={(item) => item.id.toString()}
         />
       )}
     </View>
   );
 };
 
-export default ActiveBooking;
+export default FakeAudios;

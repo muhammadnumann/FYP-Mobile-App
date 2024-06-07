@@ -251,39 +251,37 @@
   "Service Provider": "Service Provider",
   "Male": "Male",
   "Female": "Female",
-  "faq_q_1": "How does the app work?",
-  "faq_a_1": "The app connects users with local service providers who can fulfill their home service needs. Users can browse available services, select a provider, and schedule appointments through the app.",
+  "faq_q_1": "What is Auddetect?",
+  "faq_a_1": "Auddetect is a mobile application that analyzes voice samples to determine whether they are AI-generated or real.",
 
-  "faq_q_2": "How can I book a service?",
-  "faq_a_2": "To book a service, simply browse the available services in the app, select the desired service, choose a preferred service provider, and schedule an appointment based on your availability.",
+  "faq_q_2": "How does Auddetect work?",
+  "faq_a_2": "Auddetect uses advanced algorithms and machine learning techniques to analyze audio data and detect characteristics that indicate whether a voice is AI-generated or genuine.",
 
-  "faq_q_3": "What types of services are available?",
-  "faq_a_3": "Our app offers a wide range of home services, including plumbing, electrical work, carpentry, cleaning, gardening, painting, appliance repair, and more. You can explore the app to see the full list of available services.",
+  "faq_q_3": "What types of voice samples can I submit?",
+  "faq_a_3": "You can submit any voice samples, including both AI-generated and real human voices. The app is designed to analyze a wide range of audio inputs.",
 
-  "faq_q_4": "How do I find a service provider near me?",
-  "faq_a_4": "The app uses your location to display service providers near your area. You can browse through the list of providers, view their profiles, ratings, and reviews to make an informed decision.",
-
-  "faq_q_5": "How do I schedule an appointment?",
-  "faq_a_5": "Once you have selected a service and a provider, you can choose a date and time for your appointment directly in the app. The provider will confirm the appointment, and you will receive a notification with the appointment details.",
+  "faq_q_4": "Is my data secure with Auddetect?",
+  "faq_a_4": "Yes, we implement reasonable security measures to protect your personal information and audio data. However, please note that no method of transmission over the internet or electronic storage is 100% secure.",
   "FAQ's": "FAQ's",
 
   "pr_q_1": "Acceptance of the Privacy Policy",
-  "pr_a_1": "This Privacy Policy describes how we collect, use, and disclose personal information when you use our mobile application Mumtaz Services.",
+  "pr_a_1": "This Privacy Policy describes how we collect, use, and disclose personal information when you use our mobile application Auddetect. By using our app, you agree to the collection and use of information in accordance with this policy.",
 
   "pr_q_2": "Information We Collect",
-  "pr_a_2": "We may collect certain personal information that you provide directly to us, such as your name, email address, and phone number when you create an account or contact us through the app.",
+  "pr_a_2": "We may collect certain personal information that you provide directly to us, such as your name, email address, and phone number when you create an account or contact us through the app. Additionally, we collect audio data that you submit for analysis, which may include both AI-generated and real voice samples. Other collected information includes log data, device information, and usage statistics.",
 
   "pr_q_3": "How We Use Your Information",
-  "pr_a_3": "We use the collected information to provide, maintain, and improve our app, personalize your experience, and understand how users interact with our app.",
+  "pr_a_3": "We use the collected information to : Provide, maintain, and improve our app. Analyze audio data to determine whether a voice is AI-generated or real. Personalize your experience and enhance the accuracy of our detection algorithms. Understand how users interact with our app. Communicate with you, including sending updates and notifications.",
 
   "pr_q_4": "Information Sharing and Disclosure",
-  "pr_a_4": "We may share your personal information with trusted third-party service providers who assist us in operating our app, conducting business, and providing services to you.",
+  "pr_a_4": "We may share your personal information with trusted third-party service providers who assist us in operating our app, conducting business, and providing services to you. These third parties are obligated to protect your information and use it only for the purposes we specify.",
 
   "pr_q_5": "Data Security",
-  "pr_a_5": "We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the internet or electronic storage is 100% secure.",
+  "pr_a_5": "We implement reasonable security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security.",
 
   "pr_q_6": "Contact Us",
   "pr_a_6": "If you have any questions or concerns about this Privacy Policy, please contact us at .",
+
   "notification": "Notification",
   "Completed Jobs": "Completed Jobs",
   "help_center": "Help Center",

@@ -14,7 +14,7 @@ import { getBearerRequest } from '../../services/ApiServices';
 import { GET_INVOICE_BOOKING_URL } from '../../services/ApiConstants';
 
 const CustomAudioCard = React.memo(({
-  bookings,
+  audios,
   status,
   onButtonPress,
   onSuccessPress,
@@ -24,10 +24,7 @@ const CustomAudioCard = React.memo(({
 
   const dispatch = useDispatch();
 
-
-  console.log("bookings", bookings)
-
-  const totalAmount = bookings?.services?.reduce((acc, service) => {
+  const totalAmount = audios?.services?.reduce((acc, service) => {
     return acc + service?.totalAmount;
   }, 0);
 
@@ -38,7 +35,7 @@ const CustomAudioCard = React.memo(({
           style={{ flexDirection: 'row', justifyContent: 'space-between' }}
         >
           <View style={{ width: AppWidth(100) }}>
-            <Text>{bookings?.orignalFileName}</Text>
+            <Text>{audios?.orignalFileName}</Text>
           </View>
           <View style={{ width: AppWidth(100) }}>
 

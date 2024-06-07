@@ -6,6 +6,7 @@ import {
   GET_CANCELLED_BOOKING_URL,
   GET_CHAT_LIST_URL,
   GET_COMPLETED_BOOKING_URL,
+  GET_FAKE_AUDIOS_URL,
   GET_INPROGRESS_BOOKING_URL,
   GET_NEW_BOOKING_URL,
   GET_REAL_AUDIOS_URL,
@@ -26,9 +27,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const realAudioService = async () => {
   let user = await AsyncStorage.getItem("user");
-  console.log("user", JSON.parse(user).id)
-  const response = await postBearerRequest(GET_REAL_AUDIOS_URL, { userId: JSON.parse(user).id, isReal: true });
-  return response.data;
+  const response = await getBearerRequest(GET_REAL_AUDIOS_URL);
+  return response.services;
+};
+export const fakeAudioService = async () => {
+  let user = await AsyncStorage.getItem("user");
+  const response = await getBearerRequest(GET_FAKE_AUDIOS_URL);
+  return response.services;
 };
 
 export const uploadAudioService = async (file) => {

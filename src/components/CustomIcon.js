@@ -90,6 +90,9 @@ import {
   withdrawAmount,
   reviewIcon,
   DeleteIcon,
+  realAudioIcon,
+  fakeAudioIcon,
+  totalAudioIcon,
 } from '../utils/SvgIcon';
 
 export const CustomIcon = ({ name, color, height, width }) => {
@@ -97,6 +100,12 @@ export const CustomIcon = ({ name, color, height, width }) => {
     return <SvgXml xml={EmailIcon} />;
   } else if (name === 'reviewIcon') {
     return <SvgXml xml={reviewIcon} />;
+  } else if (name === 'realAudioIcon') {
+    return <SvgXml xml={realAudioIcon} />;
+  } else if (name === 'fakeAudioIcon') {
+    return <SvgXml xml={fakeAudioIcon} />;
+  } else if (name === 'totalAudioIcon') {
+    return <SvgXml xml={totalAudioIcon} />;
   } else if (name === 'password') {
     return <SvgXml xml={PasswordIcon} />;
   } else if (name === 'role') {

@@ -3,12 +3,9 @@ import { Animated, TouchableOpacity } from 'react-native';
 import { SceneMap, TabView } from 'react-native-tab-view';
 import { Box } from 'native-base';
 import { COLORS, ScreenWidth } from '../../../utils';
-import CompleteBooking from './CompleteBooking';
-import CancelBooking from './CancelBooking';
-import ActiveBooking from './ActiveBooking';
-import { getBookings } from '../../../services/SameApiServices';
 import { useTranslation } from 'react-i18next';
 import RealAudios from './RealAudios';
+import FakeAudios from './FakeAudios';
 
 export default AudioTabs = ({
   navigation,
@@ -37,9 +34,7 @@ export default AudioTabs = ({
 
   const renderScene = SceneMap({
     first: RealAudios,
-    second: ActiveBooking,
-    third: CompleteBooking,
-    fourth: CancelBooking,
+    second: FakeAudios,
   });
 
   React.useEffect(() => {
