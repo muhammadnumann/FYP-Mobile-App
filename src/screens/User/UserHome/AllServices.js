@@ -25,8 +25,8 @@ const AllServices = ({ navigation, route }) => {
     try {
       const file = await DocumentPicker.pickSingle()
       const res = await uploadAudioService(file)
-      console.log(res)
-      setAudioRes(res)
+      console.log(res?.audio)
+      setAudioRes(res?.audio)
     } catch (error) {
       console.log(error)
     }
@@ -52,15 +52,23 @@ const AllServices = ({ navigation, route }) => {
           title={"Upload New Audio File"}
           onPress={pickFiles}
         />
-        {audioRes !== undefined ?
-          <View>
-            <Text>
-              {audioRes?.fileName}
-            </Text>
-          </View> : ''
-        }
       </View>
-
+      {audioRes !== undefined ?
+        <View style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: AppHeight(2.5)
+        }}>
+          <View>
+            <Text style={{ fontWeight: '700', fontSize: AppFontSize(2) }}>File Name: </Text>
+            <Text style={{ fontWeight: '700', fontSize: AppFontSize(2) }}>Detection: </Text>
+          </View>
+          <View>
+            <Text style={{ fontSize: AppFontSize(2) }}>{audioRes?.orignalFileName}</Text>
+            <Text style={{ fontSize: AppFontSize(2) }}>{audioRes?.isReal === true ? "Real Audio File" : "Fake Audio File"}</Text>
+          </View>
+        </View> : ''
+      }
     </View>
   );
 };

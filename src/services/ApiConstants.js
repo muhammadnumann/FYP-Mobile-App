@@ -98,6 +98,5 @@ export const DELETE_ADMIN_MESSAGE_URL = `${API_URL}/Chat/delete-help-message`;
 
 //API End Points for Notifications
 
-export const GET_NOTIFICATION_URL = `${API_URL}/Notifications/get-notifications`;
 export const MARK_AS_READ_NOTIFICATION_URL = `${API_URL}/Notifications/mark-as-read`;
 export const MARK_AS_DELETE_NOTIFICATION_URL = `${API_URL}/Notifications/mark-as-delete`;

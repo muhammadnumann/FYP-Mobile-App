@@ -1,6 +1,3 @@
-import { GET_NOTIFICATION_URL } from '../../services/ApiConstants';
-import { getBearerRequest } from '../../services/ApiServices';
-
 export const getNotifications = () => {
   return async (dispatch, getState) => {
     // const { notifications } = getState().NotificationReducer;
@@ -11,7 +8,7 @@ export const getNotifications = () => {
     });
 
     try {
-      let response = await getBearerRequest(GET_NOTIFICATION_URL);
+      let response = undefined
       dispatch({
         type: 'NOTIFICATIONS',
         payload: response.data,

@@ -21,7 +21,6 @@ import {
 import { getBearerRequest } from '../../../services/ApiServices';
 import {
   GET_BOOKING_BY_ID_URL,
-  GET_NOTIFICATION_URL,
   MARK_AS_DELETE_NOTIFICATION_URL,
   MARK_AS_READ_NOTIFICATION_URL,
 } from '../../../services/ApiConstants';
