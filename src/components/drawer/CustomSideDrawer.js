@@ -13,7 +13,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import {
   closeDrawer,
-  getNotifications,
 } from '../../store/notifications/NotificationActions';
 import { AppHeight, AppWidth, COLORS, fontSize } from '../../utils';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +25,6 @@ import {
 } from '../../services/ApiConstants';
 import CustomLoading from '../Loading/CustomLoading';
 import { navigate } from '../../../RootNavigation';
-import { getInProgressJobs } from '../../store/serviceprovider/SpAction';
 import { CustomIcon } from '../CustomIcon';
 
 const CustomSideDrawer = ({ navigation }) => {
@@ -53,23 +51,12 @@ const CustomSideDrawer = ({ navigation }) => {
 
     if (user.role !== 'Client') {
       if (notification.type === 'AddBooking') {
-        navigate('SpBookingDetail', {
-          bookingId: notification?.bookingId,
-          bookedById: notification?.initiatedById,
-        });
+
       } else if (notification.type === 'AssignBookingSP') {
-        dispatch(getInProgressJobs());
         dispatch({ type: 'FEEDBACK_DATA', payload: notification });
-        navigate('BookingDetailsCommon', {
-          data: notification,
-          bookingId: notification.bookingId,
-        });
+
       } else if (notification.type === 'BookingReOpened') {
-        dispatch(getInProgressJobs());
-        navigate('Home', {
-          screen: 'BookingDetailsCommon',
-          params: { data: notification, bookingId: notification.bookingId },
-        });
+
       } else if (notification.type === 'Message') {
         navigate('Inbox', {
           chatInfo: {
@@ -83,15 +70,7 @@ const CustomSideDrawer = ({ navigation }) => {
           screen: 'ProfileHelpCenter',
         });
       } else if (notification.type === 'EndBooking') {
-        navigate('Home', {
-          screen: 'BookingDetailsCommon',
-          params: {
-            data: notification,
-            button: null,
-            completed: true,
-            bookingId: notification.bookingId,
-          },
-        });
+
       }
     } else {
       if (notification.type === 'AcceptBySPBooking') {
@@ -147,7 +126,6 @@ const CustomSideDrawer = ({ navigation }) => {
       let response = await getBearerRequest(
         MARK_AS_READ_NOTIFICATION_URL + '?notificationId=' + id
       );
-      dispatch(getNotifications());
       // dispatch({ type: "FEEDBACK_VISIBLE", payload: true });
       // SuccessToast( t("Success"), "Notification Deleted");
     } catch (error) {
@@ -161,7 +139,6 @@ const CustomSideDrawer = ({ navigation }) => {
       let response = await getBearerRequest(
         MARK_AS_DELETE_NOTIFICATION_URL + '?notificationId=' + id
       );
-      dispatch(getNotifications());
       SuccessToast(t('Success'), 'Notification Deleted');
       setLoading(false);
     } catch (error) {

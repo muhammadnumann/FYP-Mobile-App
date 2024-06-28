@@ -2,7 +2,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //IMPORT SCENES
 import UserBottomNavigation from '../screens/User/UserBottomNavigation/UserBottomNavigation';
-import ServiceProviderNavigation from '../screens/Service_Provider/BottomNavigation/ServiceProviderNavigation';
 import { useSelector } from 'react-redux';
 
 const Stack = createStackNavigator();

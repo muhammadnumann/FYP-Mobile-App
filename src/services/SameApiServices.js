@@ -84,12 +84,6 @@ export const getCities = async (stateId) => {
   return response.data;
 };
 
-export const cancelBooking = async (id) => {
-  const response = await getBearerRequest(
-    CANCEL_BOOKING_URL + '?booking=' + id
-  );
-  return response.data;
-};
 
 export const FinishBookingService = async (id) => {
   const response = await getBearerRequest(

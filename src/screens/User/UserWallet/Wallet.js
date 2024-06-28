@@ -243,16 +243,6 @@ const Wallet = ({ navigation }) => {
               AED 8,635.00
             </Text>
 
-            <CustomButton
-              title={t("add_funds")}
-              width={"37%"}
-              height={45}
-              fontSize={14}
-              top={8}
-              iconName="arrowUpWhite"
-              // onPress={() => navigation.navigate("AddBank")}
-              onPress={() => navigation.navigate("CheckoutScreen")}
-            />
           </View>
 
           <View

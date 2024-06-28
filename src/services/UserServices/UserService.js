@@ -70,12 +70,6 @@ export async function UpdateUserAddress(data) {
   return response;
 }
 
-export const cancelBooking = async (id) => {
-  const response = await getBearerRequest(
-    CANCEL_BOOKING_URL + '?booking=' + id
-  );
-  return response.data;
-};
 
 
 export const activeBookingService = async () => {

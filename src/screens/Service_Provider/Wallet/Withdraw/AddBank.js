@@ -63,7 +63,7 @@ const AddBank = ({ navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('SpNotifications');
+
   };
 
   return (

@@ -58,12 +58,7 @@ const EditAmount = ({ route, navigation }) => {
       isValid = false;
     }
     if (isValid) {
-      navigation.navigate("AddFund", {
-        bankName,
-        phone,
-        bank_account,
-        currency: inputs.currency,
-      });
+
     }
   };
 

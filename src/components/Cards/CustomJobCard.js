@@ -32,11 +32,7 @@ const CustomJobCard = ({
   const [totalAmount, setTotalAmount] = useState(0);
 
   const onPressGenerateBill = async (completed) => {
-    navigation.navigate("BookingDetailsCommon", {
-      data: data,
-      completed: completed,
-      bookingId: data.id,
-    });
+
     dispatch({ type: "FEEDBACK_DATA", payload: data });
   };
 

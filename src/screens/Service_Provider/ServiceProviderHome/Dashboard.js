@@ -6,14 +6,8 @@ import { Box, HStack, VStack, Spacer, Text } from 'native-base';
 import { CustomIcon } from '../../../components/CustomIcon';
 import JobStatsBarChart from '../../../components/Charts/JobStatsBarChart';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getCompletedJobs,
-  getCancelJobs,
-  getInProgressJobs,
-  getNewJobs,
-} from '../../../store/serviceprovider/SpAction';
+
 import { useTranslation } from 'react-i18next';
-import { getNotifications } from '../../../store/notifications/NotificationActions';
 import FeedBackModal from '../../../components/Modals/FeedBackModal';
 import CustomLoading from '../../../components/Loading/CustomLoading';
 import fcmService from '../../../utils/NotificationHandler/FCMService';
@@ -31,8 +25,8 @@ let dashboard_list = [
 ];
 
 const Dashboard = ({ route, navigation }) => {
-  const [barData , setBarData] = useState();
-  const [showChart , setShowChart] = useState(false);
+  const [barData, setBarData] = useState();
+  const [showChart, setShowChart] = useState(false);
   const completeJobs = useSelector((state) => state.SpReducer.completedJobs);
   const cancelledJobs = useSelector((state) => state.SpReducer.cancelledJobs);
   const feedBackVisible = useSelector(
@@ -54,13 +48,12 @@ const Dashboard = ({ route, navigation }) => {
     } else if (title === 'In Progress Jobs') {
       navigation.navigate('InProgressScreen');
     } else if (title === 'Completed Jobs') {
-      navigation.navigate('ProfileCompletedJob');
     } else if (title === 'Cancelled Jobs') {
       navigation.navigate('CancelledJobScreen');
     }
   };
 
- 
+
   useEffect(() => {
     const onRegister = (token) => {
       // console.log("[App] onRegister. We get FCM Token: ", token);
@@ -84,19 +77,12 @@ const Dashboard = ({ route, navigation }) => {
 
     const onOpenNotification = (notify, data) => {
       if (data.type === 'AddBooking') {
-        navigation.push('SpBookingDetail', {
-          bookingId: data.bookingId,
-          bookedById: data.initiatedById,
-        });
+
       }
 
       if (data.type === 'AssignBookingSP') {
-        dispatch(getInProgressJobs());
         dispatch({ type: 'FEEDBACK_DATA', payload: data });
-        navigate('BookingDetailsCommon', {
-          data: data,
-          bookingId: data.bookingId,
-        });
+
       }
 
       if (data.type === 'Message') {
@@ -116,20 +102,11 @@ const Dashboard = ({ route, navigation }) => {
       }
 
       if (data.type === 'EndBooking') {
-        navigate('BookingDetailsCommon', {
-          data: notify,
-          button: null,
-          completed: true,
-          bookingId: notify.bookingId,
-        });
+
       }
 
       if (data.type === 'BookingReOpened') {
-        dispatch(getInProgressJobs());
-        navigate('Home', {
-          screen: 'BookingDetailsCommon',
-          params: { data: notify, bookingId: notify.bookingId },
-        });
+
       }
     };
 
@@ -142,13 +119,7 @@ const Dashboard = ({ route, navigation }) => {
     };
   }, []);
 
-  useEffect(() => {
-    dispatch(getNotifications());
-    dispatch(getNewJobs());
-    dispatch(getInProgressJobs());
-    dispatch(getCancelJobs());
-    dispatch(getCompletedJobs());
-  }, []);
+
 
   const totalJobs = () => {
     var complete;
@@ -170,7 +141,7 @@ const Dashboard = ({ route, navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('SpNotifications');
+
   };
 
   const renderDashList = () => {
@@ -210,27 +181,25 @@ const Dashboard = ({ route, navigation }) => {
       );
     });
   };
-  const loadDashboard = async () =>{
+  const loadDashboard = async () => {
     try {
       let response = await getBearerRequest(USER_GET_DASHB_SP_URL);
       let data = [];
-       for(let i=1 ; i <= response.data.length; i++)
-       {
-         if((i%2)== 0)
-         {
+      for (let i = 1; i <= response.data.length; i++) {
+        if ((i % 2) == 0) {
           data.push({
-            value: response.data[i-1].value, frontColor: response.data[i-1].frontColor
+            value: response.data[i - 1].value, frontColor: response.data[i - 1].frontColor
           });
         }
-        else{
+        else {
           data.push({
             spacing: 2,
             labelWidth: 30,
             labelTextStyle: { color: "gray" },
-            value: response.data[i-1].value, frontColor: response.data[i-1].frontColor,
-            label: response.data[i-1].label
+            value: response.data[i - 1].value, frontColor: response.data[i - 1].frontColor,
+            label: response.data[i - 1].label
           });
-        } 
+        }
       }
       console.log(data)
       setBarData([...data]);
@@ -243,7 +212,7 @@ const Dashboard = ({ route, navigation }) => {
   useEffect(() => {
     loadDashboard();
 
-  },[]);
+  }, []);
   if (loadNotification) {
     return <CustomLoading content={t('loading') + '....'} top={null} />;
   }
@@ -310,9 +279,9 @@ const Dashboard = ({ route, navigation }) => {
               <CustomIcon name='chartFilterIcon' />
             </TouchableOpacity>
           </View>
-          {showChart ? ( 
-            <>          
-              <JobStatsBarChart  barData={barData} />
+          {showChart ? (
+            <>
+              <JobStatsBarChart barData={barData} />
             </>
           ) : null}
 

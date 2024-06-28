@@ -2,18 +2,11 @@ import { FlatList, View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import CustomAudioCard from '../../../components/Cards/CustomAudioCard';
 import { AppHeight, COLORS } from '../../../utils';
-import {
-  FinishBookingService,
-  cancelBooking,
-} from '../../../services/SameApiServices';
 import { useToast } from 'native-base';
-import WarnToast from '../../../components/Toast/WarnToast';
 import SuccessToast from '../../../components/Toast/SuccessToast';
 import CustomLoading from '../../../components/Loading/CustomLoading';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getCancelBookings,
-  getCompleteBookings,
   getDashboardDetails,
   getRealAudios,
 } from '../../../store/client/ClientActions';
@@ -34,28 +27,6 @@ const RealAudios = ({ route }) => {
     dispatch(getRealAudios());
   }, []);
 
-  const CancelBooking = async (id) => {
-    setLoading(true);
-    try {
-      let response = await cancelBooking(id);
-
-      SuccessToast(t('Success'), t('booking_cancel_msg'));
-
-      navigation.navigate('Home');
-      dispatch(getRealAudios());
-      dispatch(getCancelBookings());
-      dispatch(getDashboardDetails());
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      // WarnToast( "error");
-      console.log(error);
-    }
-  };
-
-  const FinishBooking = async (bookings) => {
-    navigation.navigate('ClientPaymentReceipt', { data: bookings });
-  };
 
   if (loadAudios) {
     return (
@@ -102,8 +73,8 @@ const RealAudios = ({ route }) => {
                 audios={item}
                 status={'Accepted'}
                 index={index}
-                onButtonPress={CancelBooking}
-                onSuccessPress={FinishBooking}
+                onButtonPress={() => { }}
+                onSuccessPress={() => { }}
                 navigation={navigation}
               />
             </View>

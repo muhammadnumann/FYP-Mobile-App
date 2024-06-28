@@ -118,9 +118,7 @@ const Profile = ({ navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('ServiceProviderProfile', {
-      screen: 'SpNotifications',
-    });
+
   };
 
   return (

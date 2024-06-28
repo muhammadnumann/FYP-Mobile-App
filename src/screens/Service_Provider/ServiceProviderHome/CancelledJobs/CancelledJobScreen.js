@@ -6,7 +6,6 @@ import { AppHeight, COLORS } from "../../../../utils";
 import CustomJobCard from "../../../../components/Cards/CustomJobCard";
 import CustomLoading from "../../../../components/Loading/CustomLoading";
 import { useDispatch, useSelector } from "react-redux";
-import { getCancelJobs } from "../../../../store/serviceprovider/SpAction";
 import { useTranslation } from "react-i18next";
 
 const CancelledJobScreen = ({ navigation }) => {
@@ -15,12 +14,9 @@ const CancelledJobScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    dispatch(getCancelJobs());
-  }, []);
 
   const onPressNotification = () => {
-    navigation.navigate("SpNotifications");
+
   };
 
   if (loadJobs) {

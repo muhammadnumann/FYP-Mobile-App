@@ -164,9 +164,7 @@ const ProfileManageAvailability = ({ navigation }) => {
   // console.lg(selectedData && selectedData);
 
   const onPressNotification = () => {
-    navigation.navigate('ServiceProviderProfile', {
-      screen: 'SpNotifications',
-    });
+
   };
 
   return (

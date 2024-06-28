@@ -15,7 +15,6 @@ import ClientBookingRecepient from "../PaymentScreens/ClientBookingRecepient";
 import UserNotification from "../UserNotifications/UserNotfications";
 import AllServices from "../UserHome/AllServices";
 
-import BookingDetailsCommon from "../../BookingDetailsCommon";
 
 const UserStack = createStackNavigator();
 
@@ -32,10 +31,7 @@ export const UserHomeScreens = () => {
                 component={ClientBookingRecepient}
             />
 
-            <UserStack.Screen
-                name="BookingDetailsCommon"
-                component={BookingDetailsCommon}
-            />
+
             <UserStack.Screen
                 name="AvailableServices"
                 component={AvailableServices}

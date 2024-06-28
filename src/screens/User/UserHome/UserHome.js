@@ -13,9 +13,7 @@ import {
   deviceCountryCode,
   getCurrentLocation,
 } from '../../../utils/helperFunction';
-import ClientFeedBackModal from '../../../components/Modals/ClientFeedBackModal';
 import CustomButton from '../../../components/CustomButton';
-import { getNotifications } from '../../../store/notifications/NotificationActions';
 import CustomLoading from '../../../components/Loading/CustomLoading';
 import { ScrollView } from 'react-native';
 import { CustomIcon } from '../../../components/CustomIcon';
@@ -66,7 +64,6 @@ const UserHome = ({ navigation }) => {
   );
 
   useEffect(() => {
-    dispatch(getNotifications());
     dispatch(getDashboardDetails());
 
     getCurrentLocation()

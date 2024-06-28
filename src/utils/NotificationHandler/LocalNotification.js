@@ -1,13 +1,8 @@
 import PushNotification, { Importance } from 'react-native-push-notification';
 
 import { Platform } from 'react-native';
-import { mergeNotifications } from '../../store/notifications/NotificationActions';
-import { useDispatch } from 'react-redux';
 import { store } from '../../store';
 import { Logout } from '../../store/AuthActions';
-import { getInProgressJobs } from '../../store/serviceprovider/SpAction';
-import { useSelector } from 'react-redux';
-import { navigate } from '../../../RootNavigation';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 class LocalNotificationService {
   //for configuring the local notification
@@ -17,21 +12,18 @@ class LocalNotificationService {
       onRegister: function (token) {
         // console.log('[LocalNotificationService] onRegister', token);
       },
-      onOpenNotification: function (notification) {},
+      onOpenNotification: function (notification) { },
       onNotification: function (notification) {
         if (notification?.data?.type === 'Logout') {
           store.dispatch(Logout());
         }
 
         if (notification?.data?.type === 'AssignBookingSP') {
-          store.dispatch(getInProgressJobs());
         }
 
         if (notification?.data?.type === 'BookingReOpened') {
-          store.dispatch(getInProgressJobs());
         }
 
-        store.dispatch(mergeNotifications(notification?.data));
 
         if (notification.userInteraction) {
           onOpenNotification(

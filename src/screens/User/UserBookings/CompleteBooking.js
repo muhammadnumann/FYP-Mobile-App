@@ -10,9 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useToast } from 'native-base';
 import SuccessToast from '../../../components/Toast/SuccessToast';
 import {
-  getCompleteBookings,
   getDashboardDetails,
-  getInprogressBookings,
 } from '../../../store/client/ClientActions';
 import { useTranslation } from 'react-i18next';
 import {
@@ -43,7 +41,6 @@ const CompleteBooking = ({ route }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCompleteBookings());
     getCompleteBookingDate();
   }, []);
 
@@ -73,8 +70,6 @@ const CompleteBooking = ({ route }) => {
     try {
       let response = await postBearerRequest(REOPEN_BOOKING_URL, data);
       SuccessToast(t('Success'), response.message);
-      dispatch(getInprogressBookings());
-      dispatch(getCompleteBookings());
       dispatch(getDashboardDetails());
       navigation.navigate('AudioHomeScreens', {
         screen: 'UserBookingHome',

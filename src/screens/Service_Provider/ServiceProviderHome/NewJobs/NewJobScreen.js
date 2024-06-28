@@ -12,7 +12,6 @@ import {
   setSpAcceptBooking,
 } from '../../../../services/ServiceProviderServices/ServiceProviderService';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNewJobs } from '../../../../store/serviceprovider/SpAction';
 import { useTranslation } from 'react-i18next';
 // import { err } from "react-native-svg/lib/typescript/xml";
 import { getBearerRequest } from '../../../../services/ApiServices';
@@ -45,7 +44,6 @@ const NewJobScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    dispatch(getNewJobs());
     getJobs();
   }, []);
 
@@ -54,7 +52,6 @@ const NewJobScreen = ({ navigation }) => {
     try {
       await setSpAcceptBooking(id);
       SuccessToast(t('Success'), t('job_accept_msg'));
-      dispatch(getNewJobs());
       navigation.navigate('Dashboard');
       setLoading(false);
     } catch (error) {
@@ -68,7 +65,6 @@ const NewJobScreen = ({ navigation }) => {
     try {
       await rejectJob(id);
       SuccessToast(t('Success'), t('job_reject_msg'));
-      dispatch(getNewJobs());
       navigation.navigate('Dashboard');
       setLoading(false);
     } catch (error) {
@@ -78,7 +74,7 @@ const NewJobScreen = ({ navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('SpNotifications');
+
   };
 
   if (loading) {

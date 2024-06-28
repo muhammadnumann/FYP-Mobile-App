@@ -25,7 +25,6 @@ import {
   MARK_AS_READ_NOTIFICATION_URL,
 } from '../../../services/ApiConstants';
 import { useDispatch, useSelector } from 'react-redux';
-import { getNotifications } from '../../../store/notifications/NotificationActions';
 import { useTranslation } from 'react-i18next';
 
 const Seprator = () => {
@@ -111,24 +110,6 @@ const UserNotification = ({ navigation }) => {
     }
   };
 
-  const getBookingDetails = async (id) => {
-    try {
-      let response = await getBearerRequest(
-        GET_BOOKING_BY_ID_URL + '?bookingid=' + id
-      );
-
-      // setBookingDetail(response.data);
-
-      navigate('Home', {
-        screen: 'BookingDetailsCommon',
-        params: { bookingId: id },
-      });
-
-      // navigation.navigate("BookingDetailsCommon", { bookingId: id });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const markAsRead = async (id) => {
     try {
@@ -136,7 +117,6 @@ const UserNotification = ({ navigation }) => {
         MARK_AS_READ_NOTIFICATION_URL + '?notificationId=' + id
       );
 
-      dispatch(getNotifications());
 
       // SuccessToast( t("Success"), "Notification Deleted");
     } catch (error) {
@@ -150,7 +130,6 @@ const UserNotification = ({ navigation }) => {
       let response = await getBearerRequest(
         MARK_AS_DELETE_NOTIFICATION_URL + '?notificationId=' + id
       );
-      dispatch(getNotifications());
       SuccessToast(t('Success'), 'Notification Deleted');
       setLoading(false);
     } catch (error) {

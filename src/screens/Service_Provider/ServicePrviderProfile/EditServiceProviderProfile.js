@@ -71,9 +71,7 @@ const EditServiceProviderProfile = ({ navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate("ServiceProviderProfile", {
-      screen: "SpNotifications",
-    });
+
   };
 
   return (

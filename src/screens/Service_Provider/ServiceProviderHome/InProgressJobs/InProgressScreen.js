@@ -6,7 +6,6 @@ import { FlatList } from "react-native";
 import CustomJobCard from "../../../../components/Cards/CustomJobCard";
 import CustomLoading from "../../../../components/Loading/CustomLoading";
 import { useDispatch, useSelector } from "react-redux";
-import { getInProgressJobs } from "../../../../store/serviceprovider/SpAction";
 import { useTranslation } from "react-i18next";
 
 const InProgressScreen = ({ navigation }) => {
@@ -16,15 +15,13 @@ const InProgressScreen = ({ navigation }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(getInProgressJobs());
   }, []);
 
   const onPressNotification = () => {
-    navigation.navigate("SpNotifications");
+
   };
 
   const onPressGenerateBill = async (item) => {
-    navigation.navigate("GenerateBill", { data: item });
     dispatch({ type: "FEEDBACK_DATA", payload: item });
   };
 

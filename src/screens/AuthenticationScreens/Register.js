@@ -39,7 +39,6 @@ import SuccessToast from "../../components/Toast/SuccessToast";
 import SelectButton from "../../components/SelectButton";
 import { Radio, Stack } from "native-base";
 import { useTranslation } from "react-i18next";
-import SelectLanguageModal from "../../components/Modals/SelectLanguageModal";
 import moment from "moment";
 import { handleLogin } from "../../store/AuthActions";
 
@@ -320,7 +319,6 @@ const Register = ({ navigation }) => {
         </ScrollView>
       </ScrollView>
 
-      <SelectLanguageModal showModal={showModal} setShowModal={setShowModal} />
     </SafeAreaView>
   );
 };

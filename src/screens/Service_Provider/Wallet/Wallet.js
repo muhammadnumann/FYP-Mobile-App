@@ -253,7 +253,7 @@ const Wallet = ({ navigation }) => {
                 fontSize={14}
                 top={8}
                 iconName="arrowDownWhite"
-                onPress={() => navigation.navigate("SpPaymentMethod")}
+                onPress={() => { }}
               />
               <CustomButton
                 title={t("Withdraw")}

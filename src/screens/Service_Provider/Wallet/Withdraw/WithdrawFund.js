@@ -18,7 +18,7 @@ const WithdrawFund = ({ route, navigation }) => {
   const { t } = useTranslation();
 
   const onPressNotification = () => {
-    navigation.navigate("SpNotifications");
+
   };
 
   React.useEffect(() => {

@@ -47,7 +47,7 @@ const EditAmount = ({ route, navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate("SpNotifications");
+
   };
 
   const onPressWithdraw = () => {

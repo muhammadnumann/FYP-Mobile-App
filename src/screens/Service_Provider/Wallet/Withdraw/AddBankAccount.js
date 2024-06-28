@@ -49,7 +49,7 @@ const AddBankAccount = ({ route, navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate("SpNotifications");
+
   };
 
   const onPressAddAccount = () => {

@@ -14,9 +14,7 @@ const ProfilePrivacy = ({ navigation }) => {
   const { t } = useTranslation();
   const [number, setNumber] = useState('');
   const onPressNotification = () => {
-    navigation.navigate('ServiceProviderProfile', {
-      screen: 'SpNotifications',
-    });
+
   };
 
   useEffect(() => {

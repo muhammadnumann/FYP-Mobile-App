@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import CustomHeader from "../../../components/CustomHeader";
 import { AppHeight, AppWidth, COLORS } from "../../../utils";
 import { SceneMap, TabView } from "react-native-tab-view";
-import ProfileCompletedJob from "./ProfileCompletedJob";
 import ProfileRejectedJob from "./ProfileRejectedJob";
 import { Box } from "native-base";
 import { Pressable } from "react-native";
@@ -27,10 +26,6 @@ const ProfileJob = ({ navigation }) => {
     },
   ]);
 
-  const renderScene = SceneMap({
-    first: ProfileCompletedJob,
-    second: ProfileRejectedJob,
-  });
 
   const renderTabBar = (props) => {
     return (
@@ -72,16 +67,7 @@ const ProfileJob = ({ navigation }) => {
   return (
     <View style={{ height: AppHeight(100), backgroundColor: COLORS.white }}>
       <CustomHeader title="Jobs" back navigation={navigation} />
-      <TabView
-        navigationState={{
-          index,
-          routes,
-        }}
-        renderScene={renderScene}
-        renderTabBar={renderTabBar}
-        onIndexChange={setIndex}
-        initialLayout={AppWidth(100)}
-      />
+
     </View>
   );
 };

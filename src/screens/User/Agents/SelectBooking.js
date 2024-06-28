@@ -28,7 +28,6 @@ import {
   ScreenWidth,
 } from '../../../utils';
 import { useDispatch } from 'react-redux';
-import { getActiveBookings } from '../../../store/client/ClientActions';
 import { useTranslation } from 'react-i18next';
 
 let morning_time = [{ time: '10:00' }, { time: '11:00' }, { time: '12:00' }];
@@ -180,7 +179,6 @@ export default function SelectBooking({ route, navigation }) {
 
         // SuccessToast( t("Success"), JSON.parse(sendingResponse).message);
         setLoading(false);
-        dispatch(getActiveBookings());
         navigation.navigate('BookingConfirmation', { status: true });
       } catch (error) {
         console.log(error);

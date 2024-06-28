@@ -12,7 +12,6 @@ import {
 } from '../../services/ApiConstants';
 import { useToast } from 'native-base';
 import WarnToast from '../../components/Toast/WarnToast';
-import SelectLanguageModal from '../../components/Modals/SelectLanguageModal';
 import { useTranslation } from 'react-i18next';
 import CustomLoading from '../../components/Loading/CustomLoading';
 import CustomPhoneField from '../../components/PhoneInput/CustomPhoneField';
@@ -209,7 +208,6 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <SelectLanguageModal showModal={showModal} setShowModal={setShowModal} />
     </SafeAreaView>
   );
 };

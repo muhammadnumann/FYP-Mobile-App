@@ -17,7 +17,6 @@ import {
   SAVE_BOOKING_URL,
 } from '../../../services/ApiConstants';
 import {
-  getActiveBookings,
   getDashboardDetails,
 } from '../../../store/client/ClientActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -98,7 +97,6 @@ const ClientBookingRecepient = ({ route, navigation }) => {
 
       // SuccessToast( t("Success"), JSON.parse(sendingResponse).message);
       setLoading(false);
-      dispatch(getActiveBookings());
       dispatch(getDashboardDetails());
 
       navigation.push('BookingConfirmation', { status: true });

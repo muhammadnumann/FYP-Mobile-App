@@ -29,10 +29,6 @@ import SuccessToast from "../../../components/Toast/SuccessToast";
 import { useToast } from "native-base";
 import CustomLoading from "../../../components/Loading/CustomLoading";
 import { useDispatch } from "react-redux";
-import {
-  getActiveBookings,
-  getInprogressBookings,
-} from "../../../store/client/ClientActions";
 import { useTranslation } from "react-i18next";
 
 const AgentProfileScreen = ({ route, navigation }) => {
@@ -90,13 +86,11 @@ const AgentProfileScreen = ({ route, navigation }) => {
     try {
       let response = await getBearerRequest(
         ASSIGN_SP_BOOKING_URL +
-          `?bookingid=${bookingId}&spId=${serviceProviderId}`
+        `?bookingid=${bookingId}&spId=${serviceProviderId}`
       );
 
       // SuccessToast( t("Success"), t("job_accept_msg"));
       SuccessToast(t("Success"), "Service Provider Assigned successfully");
-      dispatch(getInprogressBookings());
-      dispatch(getActiveBookings());
 
       // navigation.push("UserHome");
       setLaodingAccept(false);

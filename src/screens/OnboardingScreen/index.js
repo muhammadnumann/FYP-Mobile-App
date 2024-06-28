@@ -16,7 +16,6 @@ import {
   AppWidth,
   COLORS,
   fontSize,
-  ScreenHeight,
   ScreenWidth,
 } from '../../utils';
 import { Vector2 } from '../../utils/SvgIcon';

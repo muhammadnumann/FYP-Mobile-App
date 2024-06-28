@@ -5,7 +5,6 @@ import { Alert } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 // import notifee, { AndroidImportance } from "@notifee/react-native";
 import { useDispatch } from 'react-redux';
-import { mergeNotifications } from '../../store/notifications/NotificationActions';
 import notifee, { EventType } from '@notifee/react-native';
 
 async function onDisplayNotification(data) {
@@ -58,10 +57,6 @@ export default ForegroundHandler = () => {
           !!remoteMessage?.data &&
           remoteMessage?.data?.notificationType === 'AddBooking'
         ) {
-          navigation.navigate('SpBookingDetail', {
-            bookingId: remoteMessage?.data?.bookingId,
-            bookedById: remoteMessage?.data?.initiatedById,
-          });
         }
 
         if (
@@ -77,11 +72,7 @@ export default ForegroundHandler = () => {
           !!remoteMessage?.data &&
           remoteMessage?.data?.notificationType === 'AcceptBySPBooking'
         ) {
-          // navigation.navigate("BookingDetailsCommon", {
-          //   data: data,
-          //   completed: false,
-          //   bookingId: remoteMessage?.data?.bookingId,
-          // });
+
           navigation.navigate('AgentProfileScreen', {
             ProfileInfo: remoteMessage?.data,
             serviceProviderId: remoteMessage?.data?.initiatedById,

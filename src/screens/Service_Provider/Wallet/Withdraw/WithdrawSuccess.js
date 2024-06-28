@@ -104,7 +104,7 @@ const WithdrawSuccess = ({ route, navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('SpNotifications');
+
   };
 
   return (

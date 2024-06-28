@@ -71,9 +71,7 @@ const Notifications = ({ navigation }) => {
                 }}
                 py="2"
               >
-                <TouchableOpacity
-                // onPress={() => navigation.push("SpBookingDetail")}
-                >
+                <TouchableOpacity                >
                   <HStack space={3} justifyContent="space-between">
                     <Image
                       size={"sm"}
