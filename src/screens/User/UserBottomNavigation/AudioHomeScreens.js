@@ -6,7 +6,6 @@ import ClientPaymentReceipt from "../PaymentScreens/ClientPaymentReceipt";
 import ClientBookingRecepient from "../PaymentScreens/ClientBookingRecepient";
 import ClientPaymentMethod from "../PaymentScreens/ClientPaymentMethod";
 import AgentProfileScreen from "../Agents/AgentProfileScreen";
-import UserInboxHome from "../UserInbox/UserInboxHome";
 import UserInbox from "../UserInbox/UserInbox";
 
 const UserStack = createStackNavigator();
@@ -37,7 +36,6 @@ export const AudioHomeScreens = () => {
                 name="AgentProfileScreen"
                 component={AgentProfileScreen}
             />
-            <UserStack.Screen name="UserInboxList" component={UserInboxHome} />
             <UserStack.Screen name="UserInbox" component={UserInbox} />
         </UserStack.Navigator>
     );

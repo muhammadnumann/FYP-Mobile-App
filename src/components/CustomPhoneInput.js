@@ -18,18 +18,6 @@ const CustomPhoneInput = ({
   const { t } = useTranslation();
   const phoneInput = useRef(null);
 
-
-  const SelectCountry = () => {
-    country_list.filter(function (item) {
-      if (item.countryCode === phoneInput.current.state.countryCode) {
-        // handleOnchange(item.name, "country");
-        if (setStates) {
-          setStates(item.stateProvinces);
-        }
-      }
-    });
-  };
-
   return (
     <View>
       <View style={styleSheet.MainContainer}>
@@ -45,7 +33,6 @@ const CustomPhoneInput = ({
           onChangeFormattedText={(text) => {
             handleOnchange(text, name);
             handleError(null, name);
-            SelectCountry();
           }}
         />
       </View>

@@ -130,23 +130,6 @@ const ClientPaymentMethod = ({ route, navigation }) => {
             </Text>
           </View> */}
 
-          {/* <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginTop: 5,
-            }}
-          >
-            <View>
-              <Text style={styles.heading}>Wallet Balance</Text>
-            </View>
-            <View>
-              <Text style={styles.heading}>
-                {wallet_balance} {user?.currencyCode}
-              </Text>
-            </View>
-          </View> */}
-
           <View
             style={{
               flexDirection: 'row',

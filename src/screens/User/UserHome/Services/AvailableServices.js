@@ -24,7 +24,6 @@ import {
   GET_AVAILABLE_SERVICES,
 } from '../../../../services/ApiConstants';
 import WarnToast from '../../../../components/Toast/WarnToast';
-import Profile from '../../../Service_Provider/ServicePrviderProfile/Profile';
 
 export default function AvailableServices({ route, navigation }) {
   const { ProfileInfo, serviceId } = route.params;

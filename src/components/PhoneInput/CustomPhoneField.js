@@ -82,9 +82,6 @@ export default CustomPhoneField = ({
     }
   };
 
-  const selectCountry = () => {
-    setIsVisible(true);
-  };
 
   const closeOverlay = () => {
     setIsVisible(false);
@@ -94,7 +91,7 @@ export default CustomPhoneField = ({
     setIsVisible(false);
     setEmoji(item.emoji);
     setCode(item.phone);
-   
+
   };
 
   const keyExtractor = (item, index) => index.toString();
@@ -131,7 +128,6 @@ export default CustomPhoneField = ({
     setPhoneNumber(text)
     handleOnchange(number, name);
     handleError(null, name);
-    // SelectCountry();
 
     // onChangeText(number);
   };
@@ -141,7 +137,7 @@ export default CustomPhoneField = ({
       <View style={styles.fieldContainer}>
         <TouchableOpacity
           style={styles.buttonTitleStyle}
-          onPress={selectCountry}
+          onPress={() => { }}
         >
           {/* <View style={{ flexDirection: "row" }}> */}
 
@@ -161,7 +157,7 @@ export default CustomPhoneField = ({
           placeholderTextColor={'grey'}
           style={styles.inputContainerStyle}
           onChangeText={inputTextChange}
-          //   errorMessage={errorMessage}
+        //   errorMessage={errorMessage}
         />
       </View>
       <Overlay fullScreen isVisible={isVisible} onBackdropPress={closeOverlay}>

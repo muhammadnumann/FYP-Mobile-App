@@ -58,17 +58,9 @@ const CustomSideDrawer = ({ navigation }) => {
       } else if (notification.type === 'BookingReOpened') {
 
       } else if (notification.type === 'Message') {
-        navigate('Inbox', {
-          chatInfo: {
-            bookedById: notification.initiatedById,
-            clientName: notification.initiatedByName,
-            clientImage: notification.initiatedByImage,
-          },
-        });
+
       } else if (notification.type === 'HelpCenterMessage') {
-        navigate('ServiceProviderProfile', {
-          screen: 'ProfileHelpCenter',
-        });
+
       } else if (notification.type === 'EndBooking') {
 
       }

@@ -143,9 +143,7 @@ const CustomJobCard = ({
             >
               {status !== "completed" ? (
                 <Menu.Item
-                  onPress={() =>
-                    navigation.navigate("Inbox", { chatInfo: data })
-                  }
+                  onPress={() => { }}
                 >
                   {t("chat")}
                 </Menu.Item>

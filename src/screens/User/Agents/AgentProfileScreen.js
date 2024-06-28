@@ -50,11 +50,6 @@ const AgentProfileScreen = ({ route, navigation }) => {
 
   const onPressChat = () => {
     navigation.navigate("UserInbox", { chatInfo: ProfileInfo });
-
-    // navigation.navigate("UserInboxHome", {
-    //   screen: "UserInbox",
-    //   params: { chatInfo: ProfileInfo },
-    // });
   };
 
   useEffect(() => {

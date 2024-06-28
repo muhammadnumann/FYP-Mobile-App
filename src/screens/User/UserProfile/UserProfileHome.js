@@ -17,12 +17,6 @@ import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native';
 
 const SECTIONS = [
-  // {
-  //   icon: "ServiceProviderWallet",
-  //   color: "#fd2d54",
-  //   label: "My Wallet",
-  //   type: "link",
-  // },
   {
     icon: 'serviceProviderIcon',
     color: '#fe9400',
@@ -35,11 +29,6 @@ const SECTIONS = [
     label: 'Language',
     type: 'link',
   },
-  // {
-  //   icon: "serviceProviderIcon",
-  //   color: "#007afe",
-  //   label: "Become A Service Provider",
-  // },
   { icon: 'faqsIcon', color: '#fd2d54', label: 'FAQs', type: 'link' },
   {
     icon: 'privacyIcon',
@@ -70,8 +59,6 @@ const UserProfileHome = ({ navigation }) => {
       navigation.navigate('UserFaq');
     } else if (title === 'Privacy Policy') {
       navigation.navigate('UserPrivacy');
-    } else if (title === 'Change Password') {
-      navigation.navigate('ProfileChangePassword');
     } else if (title === 'Language') {
       navigation.navigate('Language');
     } else if (title === 'Edit Profile') {

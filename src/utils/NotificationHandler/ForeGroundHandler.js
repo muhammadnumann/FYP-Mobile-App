@@ -63,7 +63,6 @@ export default ForegroundHandler = () => {
           !!remoteMessage?.data &&
           remoteMessage?.data?.notificationType === 'AssignBookingSP'
         ) {
-          navigation.push('NewJobScreen');
         }
 
         // Client Navigations for background push notifications

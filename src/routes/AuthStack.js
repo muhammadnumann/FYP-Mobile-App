@@ -11,9 +11,6 @@ import UploadDoc from "../screens/AuthenticationScreens/UploadDoc";
 import ForgotPassword from "../screens/AuthenticationScreens/ForgotPassword/ForgotPassword";
 import ResetPassword from "../screens/AuthenticationScreens/ForgotPassword/ResetPassword";
 import ForgotPasswordOTP from "../screens/AuthenticationScreens/ForgotPassword/ForgotPasswordOTP";
-import SelectCountry from "../screens/SharedScreens/Location/SelectCountry";
-import SelectCity from "../screens/SharedScreens/Location/SelectCity";
-import SelectState from "../screens/SharedScreens/Location/SelectState";
 import OtpVerification from "../screens/AuthenticationScreens/OtpVerification";
 import { PermissionsAndroid } from "react-native";
 
@@ -57,9 +54,6 @@ const AuthStack = () => {
   //       <Stack.Screen name="UploadDoc" component={UploadDoc} />
   //       <Stack.Screen name="ResetPassword" component={ResetPassword} />
   //       <Stack.Screen name="ForgotPasswordOTP" component={ForgotPasswordOTP} />
-  //       <Stack.Screen name="country" component={SelectCountry} />
-  //       <Stack.Screen name="state" component={SelectState} />
-  //       <Stack.Screen name="city" component={SelectCity} />
   //       <Stack.Screen name="OtpVerification" component={OtpVerification} />
   //     </Stack.Navigator>
   //   );
@@ -76,9 +70,6 @@ const AuthStack = () => {
       <Stack.Screen name="SelectServices" component={SelectServices} />
       <Stack.Screen name="OtpScreen" component={OtpScreen} />
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
-      <Stack.Screen name="country" component={SelectCountry} />
-      <Stack.Screen name="state" component={SelectState} />
-      <Stack.Screen name="city" component={SelectCity} />
       <Stack.Screen name="OtpVerification" component={OtpVerification} />
     </Stack.Navigator>
   );
