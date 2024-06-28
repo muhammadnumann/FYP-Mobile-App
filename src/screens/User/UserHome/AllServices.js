@@ -20,13 +20,13 @@ const AllServices = ({ navigation, route }) => {
   const onPressNotification = () => {
     navigation.navigate("Home", { screen: "UserNotification" });
   };
-
+  const [audioRes, setAudioRes] = useState(undefined)
   const pickFiles = async () => {
     try {
-      const file = await DocumentPicker.pickSingle({
-        type: [DocumentPicker.types.audio]
-      })
-      await uploadAudioService(file)
+      const file = await DocumentPicker.pickSingle()
+      const res = await uploadAudioService(file)
+      console.log(res)
+      setAudioRes(res)
     } catch (error) {
       console.log(error)
     }
@@ -42,14 +42,25 @@ const AllServices = ({ navigation, route }) => {
         icon
         onPressNotification={onPressNotification}
       />
+      <View style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
 
-      <CustomButton
-        title={"Upload New Audio File"}
-        onPress={pickFiles}
-      />
+        <CustomButton
+          title={"Upload New Audio File"}
+          onPress={pickFiles}
+        />
+        {audioRes !== undefined ?
+          <View>
+            <Text>
+              {audioRes?.fileName}
+            </Text>
+          </View> : ''
+        }
+      </View>
 
-
-      {/* <Button onPress={pickFiles}>New Audio</Button> */}
     </View>
   );
 };

@@ -13,7 +13,6 @@ import {
 } from '../../../../utils';
 import { captureRef } from 'react-native-view-shot';
 import { PermissionsAndroid, Platform } from 'react-native';
-import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import Share from 'react-native-share';
 import { useTranslation } from 'react-i18next';
 
@@ -57,7 +56,7 @@ const AddFundSuccess = ({ route, navigation }) => {
         Alert.alert(
           '',
           'Your permission is required to save images to your device',
-          [{ text: 'OK', onPress: () => {} }],
+          [{ text: 'OK', onPress: () => { } }],
           { cancelable: false }
         );
       }
@@ -85,16 +84,8 @@ const AddFundSuccess = ({ route, navigation }) => {
       }
 
       // cameraroll saves image
-      const image = CameraRoll.save(uri, 'photo');
       setImageUri(uri);
-      if (image) {
-        Alert.alert(
-          '',
-          'Image saved successfully.',
-          [{ text: 'OK', onPress: () => {} }],
-          { cancelable: false }
-        );
-      }
+
     } catch (error) {
       console.log('error', error);
     }

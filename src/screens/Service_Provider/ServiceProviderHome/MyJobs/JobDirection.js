@@ -106,60 +106,9 @@ const JobDirection = ({ route, navigation }) => {
     <View>
       <CustomHeader title='Direction on Map' back navigation={navigation} />
 
-      <View style={styles.container}>
 
-        <View
-          style={{
-            position: 'absolute',
-            bottom: Platform.OS === 'ios' ? AppHeight(30) : AppHeight(20),
-            width: AppWidth(90),
-            alignSelf: 'center',
-          }}
-        >
-          <View style={styles.bottomCard}>
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Text style={{ color: COLORS.grey }}>Travel Time </Text>
-              <Text style={{ color: COLORS.grey }}>Travel Distance</Text>
-            </View>
-            <View
-              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Text>{duration?.toFixed(0)} mins </Text>
-              <Text> {distance?.toFixed(0)} Km</Text>
-            </View>
-
-            {/* <Text style={{ color: COLORS.grey, marginTop: 20 }}>Location</Text>
-            <Text>Lorem ipsum dolor sit amet consectetur.</Text> */}
-          </View>
-        </View>
-      </View>
     </View>
   );
 };
 
 export default JobDirection;
-
-const styles = StyleSheet.create({
-  container: {},
-  map: {
-    width: '100%',
-    height: '100%',
-  },
-  bottomCard: {
-    backgroundColor: 'white',
-    width: '100%',
-    padding: 30,
-    borderRadius: 12,
-  },
-  inpuStyle: {
-    backgroundColor: 'white',
-    borderRadius: 4,
-    borderWidth: 1,
-    alignItems: 'center',
-    height: 48,
-    justifyContent: 'center',
-    marginTop: 16,
-  },
-});
