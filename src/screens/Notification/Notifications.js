@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { COLORS, sampleListData, ScreenHeight } from "../../utils";
+import { COLORS, ScreenHeight } from "../../utils";
 import CustomHeader from "../../components/CustomHeader";
 import {
   Box,
@@ -58,7 +58,7 @@ const Notifications = ({ navigation }) => {
         {Seprator()}
         <Box>
           <FlatList
-            data={sampleListData}
+            data={[]}
             style={{ paddingHorizontal: 15 }}
             renderItem={({ item }) => (
               <Box

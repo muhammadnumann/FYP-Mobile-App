@@ -11,21 +11,11 @@ export async function getRequest(url) {
 
     if (error.response) {
       console.log(error.response.data);
-
-      // return (
-      //   error.response.data.detail ||
-      //   error.response.data.error ||
-      //   error.response.data.message
-      // );
     } else if (error.request) {
       console.log('Network Error');
     } else {
       console.log(error.message);
     }
-
-    // console.log("Testing by usman",e)
-    // console.log("Testing by usman",e.response)
-    // throw handler(e);
   }
 }
 

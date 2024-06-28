@@ -4,7 +4,7 @@ import CustomHeader from '../../../components/CustomHeader';
 import { COLORS, ScreenHeight } from '../../../utils';
 import EmptyScreen from "../../../components/EmptyScreen";
 
-const UserShareApp = ({navigation}) => {
+const UserShareApp = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: COLORS.white, height: ScreenHeight }}>
       <CustomHeader title="Share App" back navigation={navigation} />
@@ -12,7 +12,6 @@ const UserShareApp = ({navigation}) => {
         source={require("../../../../assets/shareApp.png")}
         subTitle={"Share with friends"}
         buttonName="Share Now"
-        // onNavigate={() => navigation.navigate("AddAddress")}
         subText={
           "Lorem ipsum dolor sit amet consectetur. Pretium lacus congue maec. Lorem ipsum dolor."
         }

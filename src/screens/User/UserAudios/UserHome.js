@@ -1,14 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import CustomHeader from "../../../components/CustomHeader";
-import { sampleListData, ScreenHeight } from "../../../utils";
+import { ScreenHeight } from "../../../utils";
 import AudioTabs from "./AudioTabs";
 import EmptyScreen from "../../../components/EmptyScreen";
 import { useToast } from "native-base";
 import SuccessToast from "../../../components/Toast/SuccessToast";
 import { useTranslation } from "react-i18next";
 
-const UserBookingHome = ({ route, navigation }) => {
+const UserHome = ({ route, navigation }) => {
   const toast = useToast();
   const { t } = useTranslation();
   const index = 1;
@@ -35,23 +35,15 @@ const UserBookingHome = ({ route, navigation }) => {
         onPressNotification={onPressNotification}
       />
       <AudioTabs
-        ProfileInfo={sampleListData}
+        ProfileInfo={[]}
         navigation={navigation}
         onCancel={onCancel}
         indexNumber={index}
       />
-      {/* <EmptyScreen
-        source={require("../../../../assets/EmptyBooking.png")}
-        subTitle={"It seems like you haven’t booked any service yet!"}
-        buttonName="Booking"
-        // onNavigate={() => navigation.navigate("AddAddress")}
-        height={137}
-        width={208} 
-      /> */}
     </View>
   );
 };
 
-export default UserBookingHome;
+export default UserHome;
 
 const styles = StyleSheet.create({});

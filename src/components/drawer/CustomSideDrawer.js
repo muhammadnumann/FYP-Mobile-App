@@ -18,11 +18,7 @@ import { AppHeight, AppWidth, COLORS, fontSize } from '../../utils';
 import { useTranslation } from 'react-i18next';
 import { Box, VStack, useToast, HStack, Badge, Center } from 'native-base';
 import { getBearerRequest } from '../../services/ApiServices';
-import {
-  GET_BOOKING_BY_ID_URL,
-  MARK_AS_DELETE_NOTIFICATION_URL,
-  MARK_AS_READ_NOTIFICATION_URL,
-} from '../../services/ApiConstants';
+
 import CustomLoading from '../Loading/CustomLoading';
 import { navigate } from '../../../RootNavigation';
 import { CustomIcon } from '../CustomIcon';
@@ -47,113 +43,14 @@ const CustomSideDrawer = ({ navigation }) => {
   const user = useSelector((state) => state.AuthReducer.user);
 
   const onPressNotification = (notification) => {
-    markAsRead(notification?.id);
+  }
 
-    if (user.role !== 'Client') {
-      if (notification.type === 'AddBooking') {
+  handleCloseDrawer();
 
-      } else if (notification.type === 'AssignBookingSP') {
-        dispatch({ type: 'FEEDBACK_DATA', payload: notification });
-
-      } else if (notification.type === 'BookingReOpened') {
-
-      } else if (notification.type === 'Message') {
-
-      } else if (notification.type === 'HelpCenterMessage') {
-
-      } else if (notification.type === 'EndBooking') {
-
-      }
-    } else {
-      if (notification.type === 'AcceptBySPBooking') {
-        navigate('AudioHomeScreens', {
-          screen: 'AgentProfileScreen',
-          params: {
-            ProfileInfo: notification,
-            serviceProviderId: notification.initiatedById,
-            bookingId: notification.bookingId,
-            action: 'Accepted',
-          },
-        });
-      } else if (notification.type === 'EndBooking') {
-        getBookingDetails(notification.bookingId);
-      } else if (notification.type === 'Message') {
-        navigate('AudioHomeScreens', {
-          screen: 'UserInbox',
-          params: {
-            chatInfo: {
-              serviceProviderId: notification.initiatedById,
-              serviceProviderName: notification.initiatedByName,
-              serviceProviderImage: notification.initiatedByImage,
-            },
-          },
-        });
-      } else if (notification.type === 'HelpCenterMessage') {
-        navigate('UserProfileHome', {
-          screen: 'ProfileHelp',
-        });
-      }
-    }
-
-    handleCloseDrawer();
-  };
-
-  const getBookingDetails = async (id) => {
-    try {
-      let response = await getBearerRequest(
-        GET_BOOKING_BY_ID_URL + '?bookingid=' + id
-      );
-
-      navigate('AudioHomeScreens', {
-        screen: 'ClientPaymentReceipt',
-        params: { data: response.data, completed: true },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const markAsRead = async (id) => {
-    try {
-      let response = await getBearerRequest(
-        MARK_AS_READ_NOTIFICATION_URL + '?notificationId=' + id
-      );
-      // dispatch({ type: "FEEDBACK_VISIBLE", payload: true });
-      // SuccessToast( t("Success"), "Notification Deleted");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const markAsDelete = async (id) => {
-    setLoading(true);
-    try {
-      let response = await getBearerRequest(
-        MARK_AS_DELETE_NOTIFICATION_URL + '?notificationId=' + id
-      );
-      SuccessToast(t('Success'), 'Notification Deleted');
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
 
   const showBadgeMessage = (message) => {
     if (message === 'Message') {
       return t('New Message');
-    } else if (message === 'EndBooking') {
-      return t('Booking Ended');
-    } else if (message === 'AddBooking') {
-      return t('New Booking');
-    } else if (message === 'AssignBookingSP') {
-      return t('Booking Assigned');
-    } else if (message === 'HelpCenterMessage') {
-      return t('Admin Message');
-    } else if (message === 'BookingReOpened') {
-      return t('Re Open');
-    } else if (message === 'AcceptBySPBooking') {
-      return t('Booking Accepted');
     }
   };
 
@@ -183,7 +80,7 @@ const CustomSideDrawer = ({ navigation }) => {
             </VStack>
 
             <VStack style={styles.crossButton}>
-              <TouchableOpacity onPress={() => markAsDelete(notification?.id)}>
+              <TouchableOpacity onPress={() => { }}>
                 <Text>x</Text>
               </TouchableOpacity>
             </VStack>

@@ -3,26 +3,12 @@ import React, { useEffect, useState } from 'react';
 import CustomHeader from '../../../components/CustomHeader';
 import { AppHeight, COLORS, fontSize } from '../../../utils';
 import { useTranslation } from 'react-i18next';
-import { getBearerRequest } from '../../../services/ApiServices';
-import { GET_CONTACT } from '../../../services/ApiConstants';
 
 const UserPrivacy = ({ navigation }) => {
   const { t } = useTranslation();
   const [number, setNumber] = useState('');
 
-  useEffect(() => {
-    getContactNumber();
-  }, []);
 
-  const getContactNumber = async () => {
-    try {
-      let response = await getBearerRequest(GET_CONTACT);
-
-      setNumber(response.data);
-    } catch (error) {
-      console.log('error', error);
-    }
-  };
 
   const onPressNotification = () => {
     navigation.navigate('UserProfileHome', { screen: 'UserNotification' });

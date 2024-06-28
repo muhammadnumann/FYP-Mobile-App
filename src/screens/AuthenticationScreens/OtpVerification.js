@@ -14,16 +14,11 @@ import AuthHeader from '../../components/AuthHeader';
 import CustomButton from '../../components/CustomButton';
 import CustomBorderButton from '../../components/CustomBorderButton';
 import { useTranslation } from 'react-i18next';
-import SuccessToast from '../../components/Toast/SuccessToast';
 import { useToast } from 'native-base';
 import {
-  USER_AUTHENTICATE_API_URL,
-  USER_AUTHENTICATE_OTP_API_URL,
 } from '../../services/ApiConstants';
 import { useDispatch } from 'react-redux';
 import WarnToast from '../../components/Toast/WarnToast';
-import { postRequest } from '../../services/ApiServices';
-import { handleLogin } from '../../store/AuthActions';
 import DeviceInfo from 'react-native-device-info';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomLoading from '../../components/Loading/CustomLoading';
@@ -75,11 +70,7 @@ const OtpVerification = ({
     };
 
     try {
-      let response = await postRequest(USER_AUTHENTICATE_API_URL, data);
-      if (response.statusCode === 200) {
-        SuccessToast(t('Success'), response.message);
-        setCounter(59);
-      }
+
       setResendLoading(false);
     } catch (error) {
       setResendLoading(false);
@@ -102,9 +93,7 @@ const OtpVerification = ({
     };
 
     try {
-      let response = await postRequest(USER_AUTHENTICATE_OTP_API_URL, data);
-      SuccessToast(t('Success'), JSON.stringify(response.message));
-      dispatch(handleLogin(response.data));
+
     } catch (error) {
       setLoading(false);
       setOtp('');

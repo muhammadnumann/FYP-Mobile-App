@@ -20,26 +20,16 @@ import {
   COLORS,
   fontSize,
   userGender,
-  userType,
 } from "../../utils";
-import { country_list } from "../../utils/country_state";
-import CustomCountryPickerModal from "../../components/CustomCountryPickerModal";
-import { CustomSelect } from "../../components/CustomSelect";
 import CustomDropdown from "../../components/CustomDropdown";
 import { postRequest } from "../../services/ApiServices";
 import {
   REGISTER_URL,
-  SEND_CODE_URL,
-  VERIFY_PHONE_RG_URL,
 } from "../../services/ApiConstants";
 import WarnToast from "../../components/Toast/WarnToast";
 import { useDispatch } from "react-redux";
-import { useToast } from "native-base";
 import SuccessToast from "../../components/Toast/SuccessToast";
-import SelectButton from "../../components/SelectButton";
-import { Radio, Stack } from "native-base";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
 import { handleLogin } from "../../store/AuthActions";
 
 const Register = ({ navigation }) => {

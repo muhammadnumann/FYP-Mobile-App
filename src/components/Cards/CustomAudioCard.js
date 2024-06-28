@@ -1,17 +1,7 @@
 import { StyleSheet, Text, View, Linking } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { AppHeight, AppWidth, COLORS, urlFormat } from '../../utils';
-import CustomButton from '../CustomButton';
-import CustomBorderButton from '../CustomBorderButton';
-import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { Badge, HamburgerIcon } from 'native-base';
-import { Menu } from 'native-base';
-import { TouchableOpacity } from 'react-native';
-import { CustomIcon } from '../CustomIcon';
-import { getBearerRequest } from '../../services/ApiServices';
-import { GET_INVOICE_BOOKING_URL } from '../../services/ApiConstants';
 
 const CustomAudioCard = React.memo(({
   audios,

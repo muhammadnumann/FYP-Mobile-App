@@ -24,17 +24,15 @@ import ImagePickerActionSheet from '../../../components/ActionSheet/ImagePickerA
 import { ScrollView, useDisclose, useToast } from 'native-base';
 import {
   EditProfile,
-  GetUserProfileInfo,
-  UploadImagetoServer,
+
 } from '../../../services/SameApiServices';
 import SuccessToast from '../../../components/Toast/SuccessToast';
 import { useMutation } from 'react-query';
 import { useQuery, useQueryClient } from 'react-query';
-import SelectButton from '../../../components/SelectButton';
-import { Radio, Stack } from 'native-base';
 import CustomDropdown from '../../../components/CustomDropdown';
 import { useTranslation } from 'react-i18next';
 import WarnToast from '../../../components/Toast/WarnToast';
+import { useSelector } from 'react-redux';
 
 export default function UserEditProfile({ navigation }) {
   const [inputs, setInputs] = useState({
@@ -45,12 +43,12 @@ export default function UserEditProfile({ navigation }) {
     fullName: '',
   });
   const [errors, setErrors] = useState({});
+  const userDetails = useSelector((state) => state.AuthReducer.user);
+  console.log(userDetails)
   const { isOpen, onOpen, onClose } = useDisclose();
   const toast = useToast();
   const queryClient = useQueryClient();
   const { t } = useTranslation();
-
-  const { data: userDetails } = GetUserProfileInfo();
 
   const {
     mutate,
@@ -61,13 +59,6 @@ export default function UserEditProfile({ navigation }) {
     error,
   } = useMutation(EditProfile);
 
-  const {
-    mutate: uploadImage,
-    data: uploadImageResponse,
-    isError: imageError,
-    isSuccess: uploadSuccess,
-    error: uploadError,
-  } = useMutation(UploadImagetoServer);
 
   useEffect(() => {
     if (isSuccess) {
@@ -81,13 +72,10 @@ export default function UserEditProfile({ navigation }) {
       console.log('error', error);
     }
 
-    if (uploadSuccess) {
-      handleOnchange(uploadImageResponse.data, 'selected_image');
-    }
-  }, [isError, isSuccess, uploadImageResponse]);
+  }, [isError, isSuccess]);
 
   useEffect(() => {
-    updateSate(userDetails?.data);
+    updateSate(userDetails);
   }, [userDetails]);
 
   const handleAddImage = (imagePath, fileName) => {
@@ -105,10 +93,10 @@ export default function UserEditProfile({ navigation }) {
   const updateSate = (profile) => {
     if (profile) {
       handleOnchange(profile.email, 'email');
-      handleOnchange(profile.phoneNumber, 'number');
+      handleOnchange(profile.phoneNo, 'number');
       handleOnchange(profile.dob, 'dob');
       handleOnchange(profile.gender, 'gender');
-      handleOnchange(profile.firstName, 'fullName');
+      handleOnchange(profile.name, 'fullName');
     }
   };
   const handleOnchange = (text, input) => {
@@ -141,28 +129,6 @@ export default function UserEditProfile({ navigation }) {
     >
       <CustomHeader title='Edit Profile' back navigation={navigation} />
       <ScrollView>
-        {/* <ImageBackground
-          source={{
-            uri:
-              inputs?.user_image === null
-                ? user_profile_image && user_profile_image
-                : inputs && inputs?.user_image,
-          }}
-          style={styles.profileImage}
-          borderRadius={12}
-        >
-          <TouchableOpacity
-            style={{
-              alignSelf: 'center',
-              bottom: -20,
-              position: 'absolute',
-            }}
-            onPress={onOpen}
-          >
-            <CustomIcon name={'cameraIcon'} />
-          </TouchableOpacity>
-        </ImageBackground> */}
-
         <View
           style={{
             marginVertical: 10,

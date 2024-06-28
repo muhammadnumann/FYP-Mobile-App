@@ -12,10 +12,7 @@ import {
   LOGIN_URL,
   REGISTER_URL,
   SEND_CODE_URL,
-  VERIFY_EMAIL_URL,
-  VERIFY_PHONE_URL,
 } from "../../services/ApiConstants";
-import { handleLogin } from "../../store/AuthActions";
 import { useDispatch } from "react-redux";
 import WarnToast from "../../components/Toast/WarnToast";
 import { useToast } from "native-base";
@@ -77,7 +74,6 @@ const OtpScreen = ({ route, navigation }) => {
 
     try {
       console.log("phone data: ", phoneData);
-      let response = await postRequest(VERIFY_PHONE_URL, phoneData);
       if (data.Role === 1) {
         handleUserRegister();
       } else if (data.Role === 2) {

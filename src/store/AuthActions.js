@@ -1,7 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { GetFCMToke } from '../utils/pushnotification_helper';
-import { getCountryCode } from '../utils/helperFunction';
-import { logoutCall, onLogout } from '../services/SameApiServices';
+import { onLogout } from '../services/SameApiServices';
 import { deleteRequest } from '../services/ApiServices';
 import { DELETE_PROFILE_URL } from '../services/ApiConstants';
 
@@ -101,7 +99,6 @@ export const Logout = () => {
       type: 'LOGOUT',
       payload: null,
     });
-    GetFCMToke();
   };
 };
 
@@ -109,13 +106,12 @@ export const DeleteAccount = (id) => {
   return async (dispatch) => {
     await AsyncStorage.removeItem('token');
     await AsyncStorage.removeItem('user');
-    await deleteRequest(`${DELETE_PROFILE_URL}/${id}`);
+    await deleteRequest(`${DELETE_PROFILE_URL}?id=${id}`);
     onLogout();
 
     dispatch({
       type: 'LOGOUT',
       payload: null,
     });
-    GetFCMToke();
   };
 };

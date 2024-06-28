@@ -6,9 +6,7 @@ import Router from "./src/routes/Router";
 import { Provider, useSelector } from "react-redux";
 import { store } from "./src/store";
 import { QueryClientProvider, QueryClient } from "react-query";
-import ForeGroundHandler from "./src/utils/NotificationHandler/ForeGroundHandler";
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
-import CustomSideDrawer from "./src/components/drawer/CustomSideDrawer";
 
 const App = () => {
   const [isAppFirstLaunched, setIsAppFirstLaunched] = React.useState(null);

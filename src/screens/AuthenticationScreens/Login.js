@@ -8,7 +8,6 @@ import { Keyboard } from 'react-native';
 import { postRequest } from '../../services/ApiServices';
 import {
   LOGIN_URL,
-  USER_AUTHENTICATE_API_URL,
 } from '../../services/ApiConstants';
 import { useToast } from 'native-base';
 import WarnToast from '../../components/Toast/WarnToast';

@@ -4,9 +4,7 @@ import { View, Text, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 
 import PhoneInput from 'react-native-phone-number-input';
 import { AppHeight, COLORS } from '../utils';
-import { country_list } from '../utils/country_state';
 import { useTranslation } from 'react-i18next';
-import { deviceCountryCode } from '../utils/helperFunction';
 const CustomPhoneInput = ({
   handleOnchange,
   setStates,

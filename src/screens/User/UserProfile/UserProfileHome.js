@@ -12,7 +12,6 @@ import { Text, useToast } from 'native-base';
 import { CustomIcon } from '../../../components/CustomIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteAccount, Logout } from '../../../store/AuthActions';
-import { GetUserProfileInfo } from '../../../services/SameApiServices';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native';
 
@@ -21,12 +20,6 @@ const SECTIONS = [
     icon: 'serviceProviderIcon',
     color: '#fe9400',
     label: 'Edit Profile',
-    type: 'link',
-  },
-  {
-    icon: 'privacyIcon',
-    color: '#fe9400',
-    label: 'Language',
     type: 'link',
   },
   { icon: 'faqsIcon', color: '#fd2d54', label: 'FAQs', type: 'link' },
@@ -46,21 +39,16 @@ const SECTIONS = [
 ];
 
 const UserProfileHome = ({ navigation }) => {
-  // const { isLoading, data: userDetails, isError, error } = GetUserProfileInfo();
   const toast = useToast();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.AuthReducer.user);
 
   const onPressSection = ({ title }) => {
-    if (title === 'Share App') {
-      navigation.navigate('UserShareApp');
-    } else if (title === 'FAQs') {
+    if (title === 'FAQs') {
       navigation.navigate('UserFaq');
     } else if (title === 'Privacy Policy') {
       navigation.navigate('UserPrivacy');
-    } else if (title === 'Language') {
-      navigation.navigate('Language');
     } else if (title === 'Edit Profile') {
       navigation.navigate('UserEditProfile');
     } else if (title === 'Delete Account') {
@@ -71,7 +59,6 @@ const UserProfileHome = ({ navigation }) => {
   };
 
   const onPressNotification = () => {
-    navigation.navigate('UserProfileHome', { screen: 'UserNotification' });
   };
 
   return (

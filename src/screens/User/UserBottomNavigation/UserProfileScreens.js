@@ -4,8 +4,6 @@ import UserFaq from "../UserProfile/UserFaq";
 import UserPrivacy from "../UserProfile/UserPrivacy";
 import UserShareApp from "../UserProfile/UserShareApp";
 import UserEditProfile from "../UserProfile/UserEditProfile";
-import ProfileManageAddress from "../UserProfile/ProfileManageAddress";
-import ProfileServiceProvider from "../UserProfile/ProfileServiceProvider";
 import UserNotification from "../UserNotifications/UserNotfications";
 import UserProfileHome from "../UserProfile/UserProfileHome";
 
@@ -20,15 +18,6 @@ export const UserProfileScreens = () => {
             <UserStack.Screen name="UserShareApp" component={UserShareApp} />
             <UserStack.Screen name="UserEditProfile" component={UserEditProfile} />
             <UserStack.Screen name="UserNotification" component={UserNotification} />
-
-            <UserStack.Screen
-                name="ProfileserviceProvider"
-                component={ProfileServiceProvider}
-            />
-            <UserStack.Screen
-                name="ProfileManageAddress"
-                component={ProfileManageAddress}
-            />
 
         </UserStack.Navigator>
     );

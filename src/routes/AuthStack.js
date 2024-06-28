@@ -2,11 +2,9 @@ import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import OnboardingScreen from "../screens/OnboardingScreen";
 import Login from "../screens/AuthenticationScreens/Login";
 import OtpScreen from "../screens/AuthenticationScreens/OtpScreen";
 import Register from "../screens/AuthenticationScreens/Register";
-import SelectServices from "../screens/AuthenticationScreens/SelectServices";
 import UploadDoc from "../screens/AuthenticationScreens/UploadDoc";
 import ForgotPassword from "../screens/AuthenticationScreens/ForgotPassword/ForgotPassword";
 import ResetPassword from "../screens/AuthenticationScreens/ForgotPassword/ResetPassword";
@@ -41,15 +39,9 @@ const AuthStack = () => {
   //   markAppFirstLaunch(); // Mark app as launched for future runs
   //   return (
   //     <Stack.Navigator screenOptions={{ headerShown: false }}>
-  //       <Stack.Screen
-  //         name="OnboardingScreen"
-  //         component={OnboardingScreen}
-  //         options={{ gestureEnabled: false }}
-  //       />
   //       <Stack.Screen name="Login" component={Login} />
   //       <Stack.Screen name="Register" component={Register} />
   //       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-  //       <Stack.Screen name="SelectServices" component={SelectServices} />
   //       <Stack.Screen name="OtpScreen" component={OtpScreen} />
   //       <Stack.Screen name="UploadDoc" component={UploadDoc} />
   //       <Stack.Screen name="ResetPassword" component={ResetPassword} />
@@ -67,7 +59,6 @@ const AuthStack = () => {
       <Stack.Screen name="ForgotPasswordOTP" component={ForgotPasswordOTP} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
 
-      <Stack.Screen name="SelectServices" component={SelectServices} />
       <Stack.Screen name="OtpScreen" component={OtpScreen} />
       <Stack.Screen name="UploadDoc" component={UploadDoc} />
       <Stack.Screen name="OtpVerification" component={OtpVerification} />

@@ -23,8 +23,6 @@ import countries from './countryCode.json';
 import { AppHeight, AppWidth, COLORS } from '../../utils';
 import { deviceCountryCode } from '../../utils/helperFunction';
 import { useTranslation } from 'react-i18next';
-import { getBearerRequest, getRequest } from '../../services/ApiServices';
-import { GET_AVAILABLE_COUNTRY_URL } from '../../services/ApiConstants';
 
 export default CustomPhoneField = ({
   onChangeText,
@@ -65,22 +63,8 @@ export default CustomPhoneField = ({
   }, [countries]);
 
   useEffect(() => {
-    getAvailableCountries();
-  }, []);
-  useEffect(() => {
     inputTextChange(phonenumber);
   }, [code])
-  const getAvailableCountries = async () => {
-    try {
-      let response = await getRequest(GET_AVAILABLE_COUNTRY_URL);
-
-      setCon(response.data);
-      setList(response.data);
-      // setAvailableCountries(response.data);
-    } catch (error) {
-      console.log('get countries error', error);
-    }
-  };
 
 
   const closeOverlay = () => {

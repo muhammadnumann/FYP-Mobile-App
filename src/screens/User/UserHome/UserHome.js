@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import { navigate } from '../../../../RootNavigation';
 import {
   deviceCountryCode,
-  getCurrentLocation,
 } from '../../../utils/helperFunction';
 import CustomButton from '../../../components/CustomButton';
 import CustomLoading from '../../../components/Loading/CustomLoading';
@@ -19,17 +18,8 @@ import { ScrollView } from 'react-native';
 import { CustomIcon } from '../../../components/CustomIcon';
 import fcmService from '../../../utils/NotificationHandler/FCMService';
 import localNotificationService from '../../../utils/NotificationHandler/LocalNotification';
-import {
-  getBearerRequest,
-  postBearerRequest,
-} from '../../../services/ApiServices';
-import {
-  GET_BOOKING_BY_ID_URL,
-  USER_GET_DASHB_URL,
-  USER_PROMOTIONS_URL,
-} from '../../../services/ApiConstants';
+
 import { getDashboardDetails } from '../../../store/client/ClientActions';
-import FeedBackModal from '../../../components/Modals/FeedBackModal';
 
 const SECTIONS = [
   {
@@ -53,7 +43,6 @@ const UserHome = ({ navigation }) => {
   const toast = useToast();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  // const { isLoading, data: serviceList, isError, error } = getServices("PK");
   const user = useSelector((state) => state.AuthReducer.user);
   const [selectSearch, setSelectSearch] = useState(false);
 
@@ -65,36 +54,9 @@ const UserHome = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(getDashboardDetails());
-
-    getCurrentLocation()
-      .then((location) =>
-        dispatch({
-          type: 'CURRENT_LOCATION_CORDS',
-          payload: {
-            latitude: location.latitude,
-            longitude: location.longitude,
-          },
-        })
-      )
-      .catch((error) => console.warn(error));
   }, []);
 
 
-
-  const getBookingDetails = async (id) => {
-    try {
-      let response = await getBearerRequest(
-        GET_BOOKING_BY_ID_URL + '?bookingid=' + id
-      );
-
-      navigate('AudioHomeScreens', {
-        screen: 'ClientPaymentReceipt',
-        params: { data: response.data, completed: true },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     const onRegister = (token) => {
@@ -127,30 +89,9 @@ const UserHome = ({ navigation }) => {
         notify
       );
       if (data.type === 'AcceptBySPBooking') {
-        navigation.navigate('AudioHomeScreens', {
-          screen: 'AgentProfileScreen',
-          params: {
-            ProfileInfo: data,
-            serviceProviderId: data.initiatedById,
-            bookingId: data.bookingId,
-            action: 'Accepted',
-          },
-        });
+
       }
 
-      if (data.type === 'EndBooking') {
-        getBookingDetails(data.bookingId);
-      }
-
-      if (data.type === 'Message') {
-        navigation.navigate('UserInbox', {
-          chatInfo: {
-            serviceProviderId: data.initiatedById,
-            serviceProviderName: data.initiatedByName,
-            serviceProviderImage: data.initiatedByImage,
-          },
-        });
-      }
 
       if (data.type === 'HelpCenterMessage') {
         navigation.navigate('UserProfileHome', {
@@ -242,8 +183,6 @@ const UserHome = ({ navigation }) => {
         navigation={navigation}
         // search={true}
         onPressNotification={onPressNotification}
-      // setSelectSearch={setSelectSearch}
-      // selectSearch={selectSearch}
       />
 
       {selectSearch ? (

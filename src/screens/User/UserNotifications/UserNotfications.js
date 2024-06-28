@@ -14,16 +14,8 @@ import CustomHeader from '../../../components/CustomHeader';
 import {
   AppHeight,
   COLORS,
-  ScreenHeight,
-  sampleListData,
-  urlFormat,
 } from '../../../utils';
-import { getBearerRequest } from '../../../services/ApiServices';
-import {
-  GET_BOOKING_BY_ID_URL,
-  MARK_AS_DELETE_NOTIFICATION_URL,
-  MARK_AS_READ_NOTIFICATION_URL,
-} from '../../../services/ApiConstants';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -74,79 +66,11 @@ const UserNotification = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
-  const onPressNotification = (notification) => {
-    markAsRead(notification.id);
-    if (notification.type === 'AcceptBySPBooking') {
-      navigation.navigate('AudioHomeScreens', {
-        screen: 'AgentProfileScreen',
-        params: {
-          ProfileInfo: notification,
-          serviceProviderId: notification.initiatedById,
-          bookingId: notification.bookingId,
-          action: 'Accepted',
-        },
-      });
-    } else if (notification.type === 'EndBooking') {
-      navigation.navigate('AudioHomeScreens', {
-        screen: 'ClientPaymentReceipt',
-        params: { data: notification },
-      });
-      // getBookingDetails(notification.bookingId);
-    } else if (notification.type === 'Message') {
-      navigation.navigate('AudioHomeScreens', {
-        screen: 'UserInbox',
-        params: {
-          chatInfo: {
-            serviceProviderId: notification.initiatedById,
-            serviceProviderName: notification.initiatedByName,
-            serviceProviderImage: notification.initiatedByImage,
-          },
-        },
-      });
-    } else if (notification.type === 'HelpCenterMessage') {
-      navigation.navigate('UserProfileHome', {
-        screen: 'ProfileHelp',
-      });
-    }
-  };
 
-
-  const markAsRead = async (id) => {
-    try {
-      let response = await getBearerRequest(
-        MARK_AS_READ_NOTIFICATION_URL + '?notificationId=' + id
-      );
-
-
-      // SuccessToast( t("Success"), "Notification Deleted");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const markAsDelete = async (id) => {
-    setLoading(true);
-    try {
-      let response = await getBearerRequest(
-        MARK_AS_DELETE_NOTIFICATION_URL + '?notificationId=' + id
-      );
-      SuccessToast(t('Success'), 'Notification Deleted');
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
 
   const showBadgeMessage = (message) => {
     if (message === 'Message') {
       return 'New Message';
-    } else if (message === 'EndBooking') {
-      return 'Booking Ended';
-    } else if (message === 'AcceptBySPBooking') {
-      return 'Booking Accepted';
-    } else if (message === 'HelpCenterMessage') {
-      return 'Admin Message';
     }
   };
 
@@ -166,7 +90,7 @@ const UserNotification = ({ navigation }) => {
             zIndex: 2,
             marginLeft: 10,
           }}
-          onPress={() => markAsDelete(notification?.id)}
+          onPress={() => { }}
         >
           <Text
             style={{
@@ -191,7 +115,7 @@ const UserNotification = ({ navigation }) => {
           }}
           py='2'
         >
-          <TouchableOpacity onPress={() => onPressNotification(notification)}>
+          <TouchableOpacity onPress={() => { }}>
             <HStack space={2} justifyContent='space-between'>
               <VStack>
                 <Image

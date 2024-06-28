@@ -8,24 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { handleRefreshToken, Init, Logout } from '../store/AuthActions';
 import CustomLoading from '../components/Loading/CustomLoading';
-import { postBearerRequest } from '../services/ApiServices';
-import { REFRESH_TOKEN_URL } from '../services/ApiConstants';
 import { AppHeight, AppWidth, COLORS } from '../utils';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18next from '../locales/I18n';
 import { View, Text, PermissionsAndroid, Platform } from 'react-native';
-import {
-  GetFCMToke,
-  NotificationListner,
-  requestUserPermission,
-} from '../utils/pushnotification_helper';
-import ForeGroundHandler from '../utils/NotificationHandler/ForeGroundHandler';
-import {
-  getCountryCode,
-  getCurrentLocation,
-  locationPermission,
-  requestUserTrackingPermission,
-} from '../utils/helperFunction';
+
 import NetInfo from '@react-native-community/netinfo';
 import { Button, Modal } from 'native-base';
 import { CustomModal } from '../components/Modals/CustomModal';
@@ -54,18 +41,7 @@ const Router = () => {
   };
 
   useEffect(() => {
-    // RefreshToken();
-    // dispatch(Logout());
-    if (Platform.OS === 'ios') requestUserTrackingPermission();
-    requestUserPermission();
-    NotificationListner();
-    GetFCMToke();
-    locationPermission();
-
     init();
-
-    // setLoading(false);
-
     const interval = setInterval(() => {
       RefreshToken();
     }, 3600000); // call RefreshToken function every hour (3600000 milliseconds)
@@ -74,8 +50,7 @@ const Router = () => {
 
   const RefreshToken = async () => {
     try {
-      let response = await postBearerRequest(REFRESH_TOKEN_URL);
-      dispatch(handleRefreshToken(response.data));
+
     } catch (error) {
       console.log('error: ' + error);
     }
@@ -129,7 +104,6 @@ const Router = () => {
           <CustomLoading content={'Loading...'} />
         ) : (
           <NavigationContainer ref={navigationRef}>
-            {/* <ForeGroundHandler /> */}
             <Stack.Navigator screenOptions={{ headerShown: false }}>
               {user === null ? (
                 <Stack.Screen name='Auth' component={AuthStack} />

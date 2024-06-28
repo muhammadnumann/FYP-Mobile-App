@@ -14,7 +14,6 @@ export default AudioTabs = ({
   indexNumber,
 }) => {
   const [index, setIndex] = React.useState(indexNumber);
-  // const { isLoading, data: activeBookings, isError, error } = getBookings();
   const { t } = useTranslation();
   const [routes] = React.useState([
     {
